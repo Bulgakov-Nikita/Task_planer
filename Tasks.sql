@@ -65,3 +65,11 @@ CREATE TABLE task_action(
   FOREIGN KEY (tasks_id) REFERENCES tasks(id),
   FOREIGN KEY  (action_id) REFERENCES `action`(id)
 );
+
+
+create table `action`(
+id int primary key auto_increment,
+`type` int,
+`description` text ,
+`action` text 
+);
