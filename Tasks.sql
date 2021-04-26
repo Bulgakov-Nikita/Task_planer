@@ -26,15 +26,34 @@ CREATE TABLE projects (
     complite BOOL
 );
 
-# Элвин
 create table `groups` (
-id int auto_increment PRIMARY KEY,
-`name` varchar(50) not null,
-date_begin DATETIME,
-date_end DATETIME,
-`description` text,
-complite bool,
-projects_id int); 
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(32) NOT NULL,
+  date_begin DATETIME,
+  date_end DATETIME,
+  `description` TEXT,
+  complite BOOL,
+  projects_id INT,
+  FOREIGEN KEY (projects_id) references projects(id)
+); 
 
-alter table `groups`
-ADD FOREIGEN KEY (projects_id) references projects (id);
+CREATE tasks (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(32) NOT NULL,
+  `description`TEXT,
+  type_task_id INT,
+  compfite BOOL NOT NULL,
+  grops_id INT,
+  objects_id INT,
+  data_begin DATETIME ,
+  data_end DATETIME , 
+  data_add DATETIME NOT NULL,
+  data_edit DATETIME ,
+  periods_id INT,
+  parent_id INT, 
+  FOREIGN KEY (type_task_id) REFERENCES type_task(id),
+  FOREIGN KEY (groups_id) REFERENCES `groups`(id),
+  FOREIGN KEY (projects_id) REFERENCES projects(id),
+  FOREIGN KEY (periods_id) REFERENCES periods(id),
+  FOREIGN KEY (perent_id) REFERENCES tasks(id)
+  );
