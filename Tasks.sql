@@ -11,15 +11,15 @@ CREATE TABLE type_interval (
     `name` VARCHAR(16)
 );
 
-CREATE TABLE periods_id (
-	tasks_id INT,
+CREATE TABLE periods (
+    tasks_id INT PRIMARY KEY AUTO_INCREMENT,
     `interval` INT,
     type_interval_id INT,
     FOREIGN KEY (type_interval_id) REFERENCES type_interval(id)
 );
 
 CREATE TABLE projects (
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     date_begin DATETIME,
     date_end DATETIME,
     `description` TEXT,
@@ -34,10 +34,10 @@ CREATE TABLE `groups` (
   `description` TEXT,
   complite BOOL,
   projects_id INT,
-  FOREIGEN KEY (projects_id) references projects(id)
+  FOREIGN KEY (projects_id) REFERENCES projects(id)
 ); 
 
-CREATE tasks (
+CREATE TABLE tasks (
   id INT PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(32) NOT NULL,
   `description`TEXT,
@@ -49,27 +49,28 @@ CREATE tasks (
   data_end DATETIME , 
   data_add DATETIME NOT NULL,
   data_edit DATETIME ,
-  periods_id INT,
+  periods_tasks_id INT,
+  groups_id INT,
+  projects_id INT,
+  type_task_id INT,
   parent_id INT, 
   FOREIGN KEY (type_task_id) REFERENCES type_task(id),
   FOREIGN KEY (groups_id) REFERENCES `groups`(id),
   FOREIGN KEY (projects_id) REFERENCES projects(id),
-  FOREIGN KEY (periods_id) REFERENCES periods(id),
-  FOREIGN KEY (perent_id) REFERENCES tasks(id)
+  FOREIGN KEY (periods_tasks_id) REFERENCES periods(tasks_id)
   );
   
-CREATE TABLE task_action(
+ CREATE TABLE `action` (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `type` INT,
+  `description` TEXT,
+  `action` TEXT 
+);
+
+CREATE TABLE task_action (
   tasks_id INT,
   action_id INT,
   sort INT,
   FOREIGN KEY (tasks_id) REFERENCES tasks(id),
   FOREIGN KEY  (action_id) REFERENCES `action`(id)
-);
-
-
-create table `action`(
-id int primary key auto_increment,
-`type` int,
-`description` text ,
-`action` text 
 );
