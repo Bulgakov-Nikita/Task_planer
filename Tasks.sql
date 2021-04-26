@@ -25,29 +25,35 @@ CREATE TABLE projects (
     `description` TEXT,
     complite BOOL
 );
-#Добавил tasks (Долгов Алекскй)
-create table tasks (
-id int auto_increment primary key,
-`name` varchar (32) not null,
-`description` varchar (128),
-type_task_id int,
-compfite bool not null,
-grops_id int,
-objects_id int,
-data_begin datetime,
-data_end datetime, 
-data_add datetime not null,
-data_edit datetime,
-periods_id int,
-parent_id int
-);
-alter table tasks
-add foreign key (type_task_id) references type_task (id);
-alter table tasks
-add foreign key (groups_id) references `groups` (id);
-alter table tasks
-add foreign key (projects_id) references projects (id);
-alter table tasks
-add foreign key (periods_id) references periods (id);
-alter table tasks
-add foreign key (perent_id) references tasks (id);
+
+create table `groups` (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(32) NOT NULL,
+  date_begin DATETIME,
+  date_end DATETIME,
+  `description` TEXT,
+  complite BOOL,
+  projects_id INT,
+  FOREIGEN KEY (projects_id) references projects(id)
+); 
+
+CREATE tasks (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(32) NOT NULL,
+  `description`TEXT,
+  type_task_id INT,
+  compfite BOOL NOT NULL,
+  grops_id INT,
+  objects_id INT,
+  data_begin DATETIME ,
+  data_end DATETIME , 
+  data_add DATETIME NOT NULL,
+  data_edit DATETIME ,
+  periods_id INT,
+  parent_id INT, 
+  FOREIGN KEY (type_task_id) REFERENCES type_task(id),
+  FOREIGN KEY (groups_id) REFERENCES `groups`(id),
+  FOREIGN KEY (projects_id) REFERENCES projects(id),
+  FOREIGN KEY (periods_id) REFERENCES periods(id),
+  FOREIGN KEY (perent_id) REFERENCES tasks(id)
+  );
