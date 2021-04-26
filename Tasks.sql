@@ -32,7 +32,7 @@ CREATE TABLE `groups` (
 ); 
 
 CREATE TABLE tasks (
-	id INT PRIMARY KEY AUTO_INCREMENT AUTO_INCREMENT,
+	id INT PRIMARY KEY AUTO_INCREMENT,
 	`name` VARCHAR(64) NOT NULL,
 	`description` TEXT,
 	type_task_id INT,
