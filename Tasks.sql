@@ -25,3 +25,16 @@ CREATE TABLE projects (
     `description` TEXT,
     complite BOOL
 );
+
+# Элвин
+create table `groups` (
+id int auto_increment PRIMARY KEY,
+`name` varchar(50) not null,
+date_begin DATETIME,
+date_end DATETIME,
+`description` text,
+complite bool,
+projects_id int); 
+
+alter table `groups`
+ADD FOREIGEN KEY (projects_id) references projects (id);
