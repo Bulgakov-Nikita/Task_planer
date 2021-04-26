@@ -26,7 +26,7 @@ CREATE TABLE projects (
     complite BOOL
 );
 
-create table `groups` (
+CREATE TABLE `groups` (
   id INT PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(32) NOT NULL,
   date_begin DATETIME,
@@ -57,3 +57,11 @@ CREATE tasks (
   FOREIGN KEY (periods_id) REFERENCES periods(id),
   FOREIGN KEY (perent_id) REFERENCES tasks(id)
   );
+  
+CREATE TABLE task_action(
+  tasks_id INT,
+  action_id INT,
+  sort INT,
+  FOREIGN KEY (tasks_id) REFERENCES tasks(id),
+  FOREIGN KEY  (action_id) REFERENCES `action`(id)
+);
