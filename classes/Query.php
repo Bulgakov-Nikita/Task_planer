@@ -2,7 +2,22 @@
 
     class Query{
 
-        
+        /**
+         *Эта функция формирует запросы для вставки записей в таблицы: tasks, groups, projects, periods, task_action
+         * Проверяется, есть ли пустые поля.
+         * Пример
+         * $a = new Query();
+        echo $a->insertTasks(Array(
+        'name' => 'Ivan',
+        'projects_id' => '2'
+        ), "tasks");
+         *
+         * Сначала создаём объект класса - $a, после вызывает echo, где обращаемся к функции insertTasks,
+         * после записывает в таблицу tasks в поле 'name' - Иван, а в поле 'projects_id' - 2
+         * @param array $arr
+         * @param $name
+         * @return string - результат хапроса
+         */
         public function insertTasks($arr = [], $name){
             //$q = DB::create();
             $arrS = [];//
@@ -45,6 +60,3 @@
         
 
     }
-    $t = new Query();
-    echo $t->insertTasks(array(), 'tasks');
-?>
