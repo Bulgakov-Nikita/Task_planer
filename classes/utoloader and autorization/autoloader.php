@@ -6,10 +6,10 @@ function my_autoloader($class) {
     'projects/',
     'projects/public/',
     'planer.log/controllers/',
-    'planer.log/models',
-    'planer.log/view',
-    'planer.log/models/autoloader',
-    'planer.log/models/users'
+    'planer.log/models/',
+    'planer.log/view/',
+    'planer.log/models/autoloader/',
+    'planer.log/models/users/'
 );
     if(file_exists($class. '.php')){
         include $class . ".php";
