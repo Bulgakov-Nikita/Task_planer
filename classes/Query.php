@@ -16,7 +16,7 @@
          * после записывает в таблицу tasks в поле 'name' - Иван, а в поле 'projects_id' - 2
          * @param array $arr
          * @param $name
-         * @return string - результат хапроса
+         * @return string - результат запроса
          */
         public function insertTasks($arr = [], $name){
             //$q = DB::create();
