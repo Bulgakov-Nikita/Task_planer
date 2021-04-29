@@ -39,10 +39,12 @@
                     $ins .= $arrS[$$name[$i]]."', '";
                 }
             }
-            echo $ins;
+            return $ins;
             //$q->qwery($ins)
         }
         
 
     }
+    $t = new Query();
+    echo $t->insertTasks(array(), 'tasks');
 ?>
