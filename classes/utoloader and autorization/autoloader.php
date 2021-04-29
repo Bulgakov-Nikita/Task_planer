@@ -1,15 +1,15 @@
 <?php 
 
 function my_autoloader($class) {
-    $directorys = array ('Task_planer/',
-    'Task_planer/planer.log/',
-    'Task_planer/projects/',
-    'Task_planer/projects/public/',
-    'Task_planer/planer.log/controllers/'/
-    'Task_planer/planer.log/models',
-    'Task_planer/planer.log/view',
-    'Task_planer/planer.log/models/autoloader',
-    'Task_planer/planer.log/models/users'
+    $directorys = array (
+    'planer.log/',
+    'projects/',
+    'projects/public/',
+    'planer.log/controllers/',
+    'planer.log/models',
+    'planer.log/view',
+    'planer.log/models/autoloader',
+    'planer.log/models/users'
 );
     if(file_exists($class. '.php')){
         include $class . ".php";
