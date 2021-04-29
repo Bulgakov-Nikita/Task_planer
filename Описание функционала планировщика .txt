@@ -1,76 +1,76 @@
-type_task - Тип сложности
-type_task.id - id сложности
-type_task.name - название сложности
+type_task - РўРёРї СЃР»РѕР¶РЅРѕСЃС‚Рё
+type_task.id - id СЃР»РѕР¶РЅРѕСЃС‚Рё
+type_task.name - РЅР°Р·РІР°РЅРёРµ СЃР»РѕР¶РЅРѕСЃС‚Рё
 
-tasks - Задачи пользователя
+tasks - Р—Р°РґР°С‡Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 tasks.id - 
-task.name - Название задачи
-tasks.decription - описание задачи
-tasks.type_task_id - id сложности
-tasks.complite - статус задачи
-tasks.groups_id - id группы
-tasks.projects_id - id проекта
-tasks.date_begin - дата начала
-tasks.date_end - дата завершения
-tasks.parent_id - id родителя
-tasks.created_at - дата создания
-tasks.created_by - кто создал
-tasks.updated_at - когда обновили
-tasks.updated_by - кто обновил
-tasks.deleted_at - когда удалил
-tasks.delited_by - кто удалил
-tasks.active - статус..
-tasks.lock - блокировка (то что не будет изменяться пользователем (например id))
+task.name - РќР°Р·РІР°РЅРёРµ Р·Р°РґР°С‡Рё
+tasks.decription - РѕРїРёСЃР°РЅРёРµ Р·Р°РґР°С‡Рё
+tasks.type_task_id - id СЃР»РѕР¶РЅРѕСЃС‚Рё
+tasks.complite - СЃС‚Р°С‚СѓСЃ Р·Р°РґР°С‡Рё
+tasks.groups_id - id РіСЂСѓРїРїС‹
+tasks.projects_id - id РїСЂРѕРµРєС‚Р°
+tasks.date_begin - РґР°С‚Р° РЅР°С‡Р°Р»Р°
+tasks.date_end - РґР°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ
+tasks.parent_id - id СЂРѕРґРёС‚РµР»СЏ
+tasks.created_at - РґР°С‚Р° СЃРѕР·РґР°РЅРёСЏ
+tasks.created_by - РєС‚Рѕ СЃРѕР·РґР°Р»
+tasks.updated_at - РєРѕРіРґР° РѕР±РЅРѕРІРёР»Рё
+tasks.updated_by - РєС‚Рѕ РѕР±РЅРѕРІРёР»
+tasks.deleted_at - РєРѕРіРґР° СѓРґР°Р»РёР»
+tasks.delited_by - РєС‚Рѕ СѓРґР°Р»РёР»
+tasks.active - СЃС‚Р°С‚СѓСЃ..
+tasks.lock - Р±Р»РѕРєРёСЂРѕРІРєР° (С‚Рѕ С‡С‚Рѕ РЅРµ Р±СѓРґРµС‚ РёР·РјРµРЅСЏС‚СЊСЃСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј (РЅР°РїСЂРёРјРµСЂ id))
 
-task_action - "действие задачи"
-task_action.id - id типа действия
-task_action.action_id - id действия 
-task_action.sort - номер по порядку
+task_action - "РґРµР№СЃС‚РІРёРµ Р·Р°РґР°С‡Рё"
+task_action.id - id С‚РёРїР° РґРµР№СЃС‚РІРёСЏ
+task_action.action_id - id РґРµР№СЃС‚РІРёСЏ 
+task_action.sort - РЅРѕРјРµСЂ РїРѕ РїРѕСЂСЏРґРєСѓ
 
-action - Виды действий
-action.id - id действия
-action.type - тип действия	
-action.description - описание действия
-action.action - действия 
+action - Р’РёРґС‹ РґРµР№СЃС‚РІРёР№
+action.id - id РґРµР№СЃС‚РІРёСЏ
+action.type - С‚РёРї РґРµР№СЃС‚РІРёСЏ	
+action.description - РѕРїРёСЃР°РЅРёРµ РґРµР№СЃС‚РІРёСЏ
+action.action - РґРµР№СЃС‚РІРёСЏ 
 
-periods - переодичность задачи
-periods.id - id периуда
-periods.tasks_id - id задачи
-periods.interval - итервал ( срок за который пользователь должен сделать задание)
-periods.type_interval_id - id интервала
+periods - РїРµСЂРµРѕРґРёС‡РЅРѕСЃС‚СЊ Р·Р°РґР°С‡Рё
+periods.id - id РїРµСЂРёСѓРґР°
+periods.tasks_id - id Р·Р°РґР°С‡Рё
+periods.interval - РёС‚РµСЂРІР°Р» ( СЃСЂРѕРє Р·Р° РєРѕС‚РѕСЂС‹Р№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґРѕР»Р¶РµРЅ СЃРґРµР»Р°С‚СЊ Р·Р°РґР°РЅРёРµ)
+periods.type_interval_id - id РёРЅС‚РµСЂРІР°Р»Р°
 
-type_interval - для таблицы периодичности (хранит тип интервала :день,месяц,год и т.д)
-type_interval.id - id интервала
-type_interval.name - название интервала
+type_interval - РґР»СЏ С‚Р°Р±Р»РёС†С‹ РїРµСЂРёРѕРґРёС‡РЅРѕСЃС‚Рё (С…СЂР°РЅРёС‚ С‚РёРї РёРЅС‚РµСЂРІР°Р»Р° :РґРµРЅСЊ,РјРµСЃСЏС†,РіРѕРґ Рё С‚.Рґ)
+type_interval.id - id РёРЅС‚РµСЂРІР°Р»Р°
+type_interval.name - РЅР°Р·РІР°РЅРёРµ РёРЅС‚РµСЂРІР°Р»Р°
 
-projects - таблица с проектами
-type_interval.id - id проекта
-type_interval.name - название проекта
-type_interval.date_begin -дата начала проекта
-type_interval.date_end - дата завершения проекта
-type_interval.complite - статус (выполнен / не выполнен)
-type_interval.created_at - дата добавления проекта
-type_interval.created_by - кто дабавил проект проект
-type_interval.updated_at - когда обновили проект 
-type_interval.updated_by - кто обновил проект
-type_interval.deleted_at - когда удалили проект
-type_interval.deleted_by - кто удалил проект
-type_interval.active - статус проекта (выполнен / не выполнен)
-type_interval.lock - блокировка (юзер не может изменять изменять id)
+projects - С‚Р°Р±Р»РёС†Р° СЃ РїСЂРѕРµРєС‚Р°РјРё
+type_interval.id - id РїСЂРѕРµРєС‚Р°
+type_interval.name - РЅР°Р·РІР°РЅРёРµ РїСЂРѕРµРєС‚Р°
+type_interval.date_begin -РґР°С‚Р° РЅР°С‡Р°Р»Р° РїСЂРѕРµРєС‚Р°
+type_interval.date_end - РґР°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ РїСЂРѕРµРєС‚Р°
+type_interval.complite - СЃС‚Р°С‚СѓСЃ (РІС‹РїРѕР»РЅРµРЅ / РЅРµ РІС‹РїРѕР»РЅРµРЅ)
+type_interval.created_at - РґР°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ РїСЂРѕРµРєС‚Р°
+type_interval.created_by - РєС‚Рѕ РґР°Р±Р°РІРёР» РїСЂРѕРµРєС‚ РїСЂРѕРµРєС‚
+type_interval.updated_at - РєРѕРіРґР° РѕР±РЅРѕРІРёР»Рё РїСЂРѕРµРєС‚ 
+type_interval.updated_by - РєС‚Рѕ РѕР±РЅРѕРІРёР» РїСЂРѕРµРєС‚
+type_interval.deleted_at - РєРѕРіРґР° СѓРґР°Р»РёР»Рё РїСЂРѕРµРєС‚
+type_interval.deleted_by - РєС‚Рѕ СѓРґР°Р»РёР» РїСЂРѕРµРєС‚
+type_interval.active - СЃС‚Р°С‚СѓСЃ РїСЂРѕРµРєС‚Р° (РІС‹РїРѕР»РЅРµРЅ / РЅРµ РІС‹РїРѕР»РЅРµРЅ)
+type_interval.lock - Р±Р»РѕРєРёСЂРѕРІРєР° (СЋР·РµСЂ РЅРµ РјРѕР¶РµС‚ РёР·РјРµРЅСЏС‚СЊ РёР·РјРµРЅСЏС‚СЊ id)
 
-groups - таблица с группами
-groups.id - id группы
-groups.name - название группы
-groups.date_begin -дата начала группы 
-groups.date_end - дата завершения
-groups.description - описание группы
-groups.complite - статус группы
-groups.projects_id - id проекта
-groups.created_at - когда была создана группа
-groups.created_by - кто создал группу
-groups.updated_at - когда обновлено
-groups.updated_by - кто добавил группу
-groups.deleted_at - когда удалить группу
-groups.deleted_by - кто удалил группу
-groups.active - статус группы
-groups.lock - блокировка (юзер не может изменять изменять id) 
+groups - С‚Р°Р±Р»РёС†Р° СЃ РіСЂСѓРїРїР°РјРё
+groups.id - id РіСЂСѓРїРїС‹
+groups.name - РЅР°Р·РІР°РЅРёРµ РіСЂСѓРїРїС‹
+groups.date_begin -РґР°С‚Р° РЅР°С‡Р°Р»Р° РіСЂСѓРїРїС‹ 
+groups.date_end - РґР°С‚Р° Р·Р°РІРµСЂС€РµРЅРёСЏ
+groups.description - РѕРїРёСЃР°РЅРёРµ РіСЂСѓРїРїС‹
+groups.complite - СЃС‚Р°С‚СѓСЃ РіСЂСѓРїРїС‹
+groups.projects_id - id РїСЂРѕРµРєС‚Р°
+groups.created_at - РєРѕРіРґР° Р±С‹Р»Р° СЃРѕР·РґР°РЅР° РіСЂСѓРїРїР°
+groups.created_by - РєС‚Рѕ СЃРѕР·РґР°Р» РіСЂСѓРїРїСѓ
+groups.updated_at - РєРѕРіРґР° РѕР±РЅРѕРІР»РµРЅРѕ
+groups.updated_by - РєС‚Рѕ РґРѕР±Р°РІРёР» РіСЂСѓРїРїСѓ
+groups.deleted_at - РєРѕРіРґР° СѓРґР°Р»РёС‚СЊ РіСЂСѓРїРїСѓ
+groups.deleted_by - РєС‚Рѕ СѓРґР°Р»РёР» РіСЂСѓРїРїСѓ
+groups.active - СЃС‚Р°С‚СѓСЃ РіСЂСѓРїРїС‹
+groups.lock - Р±Р»РѕРєРёСЂРѕРІРєР° (СЋР·РµСЂ РЅРµ РјРѕР¶РµС‚ РёР·РјРµРЅСЏС‚СЊ РёР·РјРµРЅСЏС‚СЊ id) 
