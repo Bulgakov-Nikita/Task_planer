@@ -1,10 +1,14 @@
-let g =document.getElementById('mg'),
+let g =document.getElementById('mg');
 popupToggle = document.getElementById('muBth');
 popupClose = document.querySelector('.close');
 popurAdd = document.getElementById('menuAdd');
-
 popupToggle.onclick = function(){
+	if (popurAdd.style.display == "inline"){
+		popurAdd.style.display = "none";
+	}
+	else {
 	popurAdd.style.display = "inline";
+	}
 }
 popupClose.onclick = function(){
 	popurAdd.style.display = "none";
@@ -15,7 +19,12 @@ popupClose1 = document.querySelector('.close1');
 popupToggle1 = document.getElementById('muBth1');
 
 popupToggle1.onclick = function(){
+	if (popurAdd1.style.display == "inline"){
+		popurAdd1.style.display = "none";
+	}
+	else {
 	popurAdd1.style.display = "inline";
+	}
 }
 popupClose1.onclick = function(){
 	popurAdd1.style.display = "none";
@@ -27,7 +36,12 @@ popupClose2 = document.querySelector('.close2');
 popupToggle2 = document.getElementById('muBth2');
 
 popupToggle2.onclick = function(){
+	if (popurAdd2.style.display == "inline"){
+		popurAdd2.style.display = "none";
+	}
+	else {
 	popurAdd2.style.display = "inline";
+	}
 }
 popupClose2.onclick = function(){
 	popurAdd2.style.display = "none";
@@ -36,11 +50,14 @@ popupClose2.onclick = function(){
 popurAdd3 = document.getElementById('menuAdd3');
 popupClose3 = document.querySelector('.close3');
 popupToggle3 = document.getElementById('muBth3');
-
 popupToggle3.onclick = function(){
+	if (popurAdd3.style.display == "inline"){
+		popurAdd3.style.display = "none";
+	}
+	else {
 	popurAdd3.style.display = "inline";
+	}
 }
 popupClose3.onclick = function(){
 	popurAdd3.style.display = "none";
 }
-////////////////////////////////////////////////
