@@ -70,7 +70,7 @@ P{
 		
 	}
 	#p{
-		font-size: 15px;
+		font-size: 16px;
 		display:inline;
 		text-align: left;
 	}
@@ -84,3 +84,13 @@ P{
 		width: 100%;
 		
 	}
+    #menuAdd1, #menuAdd2, #menuAdd3 {
+		border: 3px solid black;
+		width: 200px;
+		position: absolute;
+		top: 25px; 
+		right: 70px;
+		display: none;
+		background-color: white;
+		border-radius: 20px;
+    }   
