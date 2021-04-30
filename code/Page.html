@@ -8,33 +8,57 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Код/style.css">
+    <link rel="stylesheet" href="../code/style.css">
   </head>
   <body>
       <!--Название проекта -->
     <div class="navbar"> 
         <span class="logo">Название проекта</span>
     </div>
-        <div class="container-fluid">
+   
+        <div class="container">
             <div class="row">
-                <div class="col">
+            <div class="col class">
                     <a href="#">
-                        <img class = "item-img img-plus" src="../Код/Img/add.png" alt = "#">
+                        <img class = "item-img img-plus" src="../code/Img/add.png" alt = "#">
                         <p class="text-add">Создать группу</p>
                     </a>
-                </div>
-                <div class="col">
-                    <p class="text-add">Название задания</p>
-                    <a class="text-add" href="#">Главная задача</a>
-                    <a class="text-add" href="#">Подзадача</a>
-                </div>
-                <div class="col">
-                    <h2>Добавить задачи</h2>
-                    <p>Название задачи</p>
-                    <input class="inp" type="text">
-                    <input type="submit">
-                </div>
             </div>
+             <!--Боковое меню-->
+             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                <div class="sidebar">
+                    <div class="col bar">
+                        <form action="#" method="post">
+                        <nav id="menuVertical">
+                            <ul class="list">
+                                <li>Главная задача
+                                    <ul class="sub-list">
+                                        <li>hfkjsd</li>
+                                        </ul>
+                                    <li>Подзадачи
+                                    <ul class="sub-list">
+                                        <li>hfkjsd</li>
+                                    </ul>
+                                </li>
+                        </form>
+                    </div>
+                </div>
+                <script>
+                $('.list li').on('click', function(e) {
+                    e.stopPropagation();
+                    var subList = $(this).children('.sub-list');
+                    
+                    if (subList.hasClass('open')) {
+                      $(this).find('.sub-list').removeClass('open');
+                    } else {
+                      subList.addClass('open');
+                    }
+                  });
+                  </script>
+            </div>
+        </div>
+                
+            
         </div>
   </body>
 </html>

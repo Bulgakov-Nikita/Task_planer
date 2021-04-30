@@ -26,41 +26,112 @@ body{
 }
 .col{
     background-color: white;
-    margin-right: 40px;
+    margin-right: 30px;
     border-radius: 6%;
+    
     }
+.class{
+    width: 70%;
+    height: 200px;
+    margin-right: 50%;
+}
 P{
-    font-size: 30px;
+    font-size: 23px;
     padding: 10px;
     margin-left: 20%;
 }
 .item{
     width: 30px;
     height: 28px;
-    margin-left: 20%;
-        
+    
     }
 .text-add{
-    font-size: 30px;
-    padding-bottom: 20px;
-    padding-left: 30px;
+    font-size: 25px;
+    margin-top: 30px;
     color: black;    
-    }
+    } 
+
 .item-img{  
-    margin-left: 30px;
-    margin-right: 20px;
-    margin-top: 20px;
+   margin-right: 20px;
     width: 30px;
     height: 28px;
     float: left;
     }
 .img-plus{
-    width: 70px;
-    height: 70px;
-
+    width: 50px;
+    height: 50px;
+    margin-left: 40px;
+    margin-top: 40px;
 }
 .inp{
     width: 400px;
     height: 100px;
 
+}
+.bar{
+    background-color: white;
+    position: absolute;
+    right: 15px;
+    width: 300px;
+    height: 400px;
+}
+#menuAdd{
+    border: 3px solid black;
+    width: 150px;
+    position: absolute;
+    top: 25px; 
+    right: 70px;
+    z-index: 100;
+    display: none;
+    background-color: white;
+    border-radius: 20px;
+    
+}
+#p{
+    font-size: 16px;
+    display:inline;
+    text-align: left;
+}
+#bt{
+    border-radius:100px;
+    border: 0px solid white;
+    
+}
+#bor{
+    border: 2px solid grey;
+    width: 100%;
+    
+}
+#menuAdd1, #menuAdd2, #menuAdd3, #menuAdd4, #menuAdd5, #menuAdd6 {
+    border: 3px solid black;
+    width: 200px;
+    position: absolute;
+    top: 25px; 
+    right: 70px;
+    display: none;
+    background-color: white;
+    border-radius: 20px;
+}   
+#ppp{
+    font-size: 15px;
+}
+#tex{
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+.sub-list {
+    display: none;
+  }
+  
+.sub-list.open {
+    display: block;
+  }
+li{
+    font-size: 28px;
+}
+#muBth1, #muBth2, #muBth3, #muBth4, #muBth5, #muBth6{
+    background-color: #fff;
+    border: none;
 }
