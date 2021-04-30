@@ -47,6 +47,27 @@ popupClose2.onclick = function(){
 	popurAdd2.style.display = "none";
 }
 ////////////////////////////////////////////////
+popurAdd4 = document.getElementById('menuAdd4');
+popupClose4 = document.querySelector('.close4');
+popupToggle4 = document.getElementById('muBth4');
+
+popupToggle4.onclick = function(){
+	if (popurAdd4.style.display == "inline"){
+		popurAdd4.style.display = "none";
+	}
+	else {
+	popurAdd4.style.display = "inline";
+	}
+}
+popupClose4.onclick = function(){
+	popurAdd4.style.display = "none";
+}
+
+
+
+
+
+////////////////////////////////////////////////
 popurAdd3 = document.getElementById('menuAdd3');
 popupClose3 = document.querySelector('.close3');
 popupToggle3 = document.getElementById('muBth3');
@@ -60,4 +81,36 @@ popupToggle3.onclick = function(){
 }
 popupClose3.onclick = function(){
 	popurAdd3.style.display = "none";
+}
+////////////////////////////////////////////////
+popurAdd5 = document.getElementById('menuAdd5');
+popupClose5 = document.querySelector('.close5');
+popupToggle5 = document.getElementById('muBth5');
+
+popupToggle5.onclick = function(){
+	if (popurAdd5.style.display == "inline"){
+		popurAdd5.style.display = "none";
+	}
+	else {
+	popurAdd5.style.display = "inline";
+	}
+}
+popupClose5.onclick = function(){
+	popurAdd5.style.display = "none";
+}
+////////////////////////////////////////////////
+popurAdd6 = document.getElementById('menuAdd6');
+popupClose6 = document.querySelector('.close6');
+popupToggle6 = document.getElementById('muBth6');
+
+popupToggle6.onclick = function(){
+	if (popurAdd6.style.display == "inline"){
+		popurAdd6.style.display = "none";
+	}
+	else {
+	popurAdd6.style.display = "inline";
+	}
+}
+popupClose6.onclick = function(){
+	popurAdd6.style.display = "none";
 }
