@@ -43,9 +43,9 @@ P{
         
     }
     .text-add{
-        font-size: 30px;
-        padding-bottom: 20px;
-        padding-left: 30px;
+        font-size: 20px;
+        padding-bottom: 0px;
+        padding-left:0px;
         color: black;
         
     }
@@ -84,7 +84,7 @@ P{
 		width: 100%;
 		
 	}
-    #menuAdd1, #menuAdd2, #menuAdd3 {
+    #menuAdd1, #menuAdd2, #menuAdd3, #menuAdd4, #menuAdd5, #menuAdd6 {
 		border: 3px solid black;
 		width: 200px;
 		position: absolute;
@@ -94,3 +94,12 @@ P{
 		background-color: white;
 		border-radius: 20px;
     }   
+    #ppp{
+        font-size: 15px;
+    }
+    #tex{
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        margin-left: 10px;
+        margin-top: 3px;
+    }
