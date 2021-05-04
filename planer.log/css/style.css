@@ -1,0 +1,176 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-image: url('../Img/fon2.png');
+    background-size: 100%;
+    /* background-color: rgb(100, 175, 237); */
+}
+.navbar{
+    background-color: rgb(100, 216, 237);
+    padding: 20px 40px;
+    margin: auto;
+}
+.logo{ 
+    font-size: 30px;
+    padding-left: 40%;
+}
+.imgplus{
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 10%;
+}
+
+.row{
+    margin: 20px 40px;
+}
+.col{
+    background-color: orange;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    /* border-radius: 6%; */
+    padding: 0px;
+    min-width: 400px;
+}
+.col_p{
+    background-color: greenyellow;
+}
+.class{
+    width: 70%;
+    height: 200px;
+    margin-right: 50%;
+}
+P{
+    font-size: 23px;
+    padding: 10px;
+    /* margin-left: 20%; */
+}
+.item{
+    width: 30px;
+    height: 28px;
+    
+    }
+.text-add{
+    font-size: 25px;
+    margin-top: 30px;
+    color: black;    
+    } 
+
+.item-img{  
+   margin-right: 20px;
+    width: 30px;
+    height: 28px;
+    float: left;
+    }
+.img-plus{
+    width: 50px;
+    height: 50px;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+.inp{
+    width: 400px;
+    height: 100px;
+
+}
+.bar{
+    background-color: white;
+    position: absolute;
+    right: 15px;
+    width: 300px;
+    height: 400px;
+}
+/* Менюшка из заголовка на +  */
+#menu_main{
+    border: 3px solid black;
+    width: 150px;
+    position: absolute;
+    /* top: 25px; 
+    right: 70px; */
+    z-index: 100;
+    display: none;
+    background-color: white;
+    /* border-radius: 20px; */
+}
+#p{
+    font-size: 16px;
+    display:inline;
+    text-align: left;
+}
+#bt{
+    border-radius:100px;
+    border: 0px solid white;
+    
+}
+#bor{
+    border: 2px solid grey;
+    width: 100%;
+}
+#menuAdd, #menuAdd1, #menuAdd2, #menuAdd3, #menuAdd4, #menuAdd5, #menuAdd6 {
+    border: 3px solid black;
+    /* width: 200px; */
+    position: absolute;
+    /* top: 25px; 
+    right: 70px; */
+    display: none;
+    background-color: white;
+    /* border-radius: 20px; */
+    z-index: 10000;
+}   
+#bt_add{
+    /*  */
+}
+#addMenu{
+    border: 3px solid black;
+    width: 400px;
+    position: absolute;
+    /* top: 25px; 
+    right: 70px; */
+    display: none;
+    background-color: white;
+    color: black;
+}
+#ppp{
+    font-size: 15px;
+}
+#tex{
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+.sub-list {
+    display: none;
+  }
+  
+.sub-list.open {
+    display: block;
+  }
+li{
+    font-size: 28px;
+}
+#muBth, #muBth1, #muBth2, #muBth3, #muBth4, #muBth5, #muBth6{
+    width: 150px;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    /* display: inline-block; */
+    z-index: 10000;
+    /* float: right; */
+}
+.bt_cc{
+    display: block;
+    width: 150px;
+}
+
+#nameTask{
+    margin: 0;
+    padding: 0;
+}
+#task_style{
+    color: white;
+    background-color:darkmagenta;
+    padding: 5px;
+    margin-bottom: 5px;
+}
