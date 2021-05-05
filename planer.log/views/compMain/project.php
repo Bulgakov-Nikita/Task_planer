@@ -99,9 +99,9 @@
 					    <div id='menuAdd'>
 					        <form action = 'main/add/' method = 'get'>
                                 Название группы:
-                                <input type='text' name='name'>
+                                <textarea name='name' id='tex'></textarea>
                                 Описание:
-                                <input type='text' name='desc'>
+                                <textarea name='desc' id='tex'></textarea>
                                 Дата начала:
                                 <input type='date' name='date_b'>
                                 Дата завершения:
@@ -115,10 +115,10 @@
 					    <!-- Меню для кнопнки задачу -->
 					    <div id='menuAdd'>
 					        <form action = 'main/add/' method = 'get'>
-                                Название задачи: 
-                                <input type='text' name='name'>
+                                Название задачи:
+                                <textarea name='name' id='tex'></textarea>
                                 Описание:
-                                <input type='text' name='desc'>
+                                <textarea name='desc' id='tex'></textarea>
                                 Дата начала:
                                 <input type='date' name='date_b'>
                                 Дата завершения:
