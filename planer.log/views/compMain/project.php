@@ -94,15 +94,42 @@
 					<button id='muBth'><img class='item-img' src='Img/add.png'></button>
 					<!-- менюшка добавления задачи -->
 					<div id='menuAdd'>
-						<!--<p id='ppp'>Добавить название</p>-->
-						<!-- div><form action='/main/add' method='get'>
-							<textarea name='name' id='tex'>Название задачи</textarea>
-							<textarea id='tex'>Описание</textarea>
-							<input type='text' name='group' style='display: none;' value='null'><br/>
-							<input type='text' name='project' style='display: none;' value='".$pr['id']."'><br/>
-							<button name='type_bt' value='tasks'>add</button>
-						</form></div -->
-						<p>В будущем будет добавлена эта возможность</p>
+					    <button id='muBth'>Группу</button>
+					    <!-- Меню для кнопки группу -->
+					    <div id='menuAdd'>
+					        <form action = 'main/add/' method = 'get'>
+                                Название группы:
+                                <input type='text' name='name'>
+                                Описание:
+                                <input type='text' name='desc'>
+                                Дата начала:
+                                <input type='date' name='date_b'>
+                                Дата завершения:
+                                <input type='date' name='date_e'>
+                                <input type='text' value='".$pr['id']."' name='project' style='display:none;'>
+                                <button name='type_bt' value='groups'>Добавить</button>
+                            </form>
+                        </div>
+					    <br/>
+					    <button id='muBth'>Задачу</button>
+					    <!-- Меню для кнопнки задачу -->
+					    <div id='menuAdd'>
+					        <form action = 'main/add/' method = 'get'>
+                                Название задачи: 
+                                <input type='text' name='name'>
+                                Описание:
+                                <input type='text' name='desc'>
+                                Дата начала:
+                                <input type='date' name='date_b'>
+                                Дата завершения:
+                                <input type='date' name='date_e'>
+                                <input name='group' value='null' style='display:none;'>
+                                <input name='project' value='".$pr['id']."' style='display:none;'>
+                                Тип:
+						        <select name='type_task'>".$strOp3."</select>
+                                <button name='type_bt' value='tasks'>Добавить</button>
+					        </form>
+                        </div>
 					</div>
 					</p>
 				</div>
