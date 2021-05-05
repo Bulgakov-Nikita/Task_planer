@@ -75,17 +75,21 @@
 					<div id='menuAdd'>
 						<!--<p id='ppp'>Добавить название</p>-->
 						<div><form action='/main/add' method='get'>
-							<textarea name='name' id='tex'>Название задачи</textarea>
-							<textarea name='desc' id='tex'>Описание</textarea>
+							Название задачи:<br/>
+                            <textarea name='name' id='tex'></textarea>
+                            <br/>
+                            Описание:<br/>
+                            <textarea name='desc' id='tex'></textarea>
+                            <br/>
 							<input name='group' value='".$group['id']."' style='display:none;'>
 							<input name='project' value='".$p1."' style='display:none;'>
 							<br/>
-							Тип:
+							Тип:<br/>
 							<select name='type_task'>".$strOp3."</select>
 							<br/>
-							Дата начала:
+							Дата начала:<br/>
 							<input type='date' name='date_b'><br/>
-							Дата конца:
+							Дата конца:<br/>
 							<input type='date' name='date_e'><br/>
 							<button name='type_bt' value='tasks'>Добавить</button>
 						</form></div>
