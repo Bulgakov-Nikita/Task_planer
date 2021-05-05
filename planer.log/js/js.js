@@ -24,8 +24,8 @@ for(i = 0; i < bte_add.length; i++){
 	let b = document.querySelector(".el_addi_" + i);
 
 	a.onclick = function(){
-		b.style.top = a.getBoundingClientRect().top + 50;// + "px";//+ pageYOffset + 50 + "px";
-		b.style.left = a.getBoundingClientRect().left - 2100 + "px";// + "px";//+ 100 + "px";//- pageXOffset - 150 + "px";//popupToggle.offsetWidth + "px";
+		b.style.top = "50px";//a.getBoundingClientRect().top + 50;// + "px";//+ pageYOffset + 50 + "px";
+		b.style.left = "-400px";//a.getBoundingClientRect().left - 2100 + "px";// + "px";//+ 100 + "px";//- pageXOffset - 150 + "px";//popupToggle.offsetWidth + "px";
 		//alert(b.style.left);
 		if (b.style.display == "inline"){
 			b.style.display = "none";
