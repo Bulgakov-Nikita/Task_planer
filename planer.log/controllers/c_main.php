@@ -45,6 +45,25 @@
             echo "<script>document.location.replace('/');</script>";
         }
         public function showInfo(){
-            # code...
+            $n = 'm_'.$_GET['type_bt'];
+            //подключаем модель "для работы этого метода"
+            require_once 'models/'.$n.'.php';
+            $obj = new $n();
+            //НИЖЕ УЖЕ НЕ РАБОТА КОНТРОЛЛЕРА
+            $data = $obj->get_info();
+            $data1;
+            //В БУДУЩЕМ ПЕРЕДЕЛАТЬ get_info так, чтобы он присылал только одну строчку а не всю таблицу
+            while($r = $data->fetch_assoc()){
+                if($r['id'] == $_GET['group']){
+                    $data1 = $r;
+                    break;
+                }
+            }
+            foreach($data1 as $key => $val){
+                echo "<p>$key - $val</p>";
+            }
+            //=-=-=-=-=-=copypast
+            //после добавления задачи переходим в главный view
+            //echo "<script>document.location.replace('/');</script>";
         }
     }

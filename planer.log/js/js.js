@@ -57,3 +57,73 @@ for(i = 0; i < popupToggle_All.length; i++){
 		}
 	}
 }
+
+
+
+//=-=-=-=-=-=-=-=-=-=-= SHOW INFO!!!!!!!!!!!!!!!!!! =-=-=-=-=-=-=-=-=-=-=-
+// // 1. Создаём новый объект XMLHttpRequest
+// var xhr = new XMLHttpRequest();
+
+// // 2. Конфигурируем его: GET-запрос на URL 'phones.json'
+// xhr.open('GET', 'phones.json', false);
+
+// // 3. Отсылаем запрос
+// xhr.send();
+
+// // 4. Если код ответа сервера не 200, то это ошибка
+// if (xhr.status != 200) {
+//   // обработать ошибку
+//   alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+// } else {
+//   // вывести результат
+//   alert( xhr.responseText ); // responseText -- текст ответа.
+// }
+
+
+
+
+// let res = await fetch('main/showInfo');
+// let text = await res.text();
+// alert('asd: ' + text);
+
+
+
+// // 1. Создаём новый XMLHttpRequest-объект
+// let xhr = new XMLHttpRequest();
+
+// // 2. Настраиваем его: GET-запрос по URL /article/.../load
+// xhr.open('GET', '/main/showInfo', true);
+
+// // 3. Отсылаем запрос
+// xhr.send();
+// alert("213: " + xhr.response);
+// for(i = 0; i < popurAdd.length; i++){
+// 	let el_bti = document.querySelector(".bti_" + i);
+// 	let el_i = document.querySelector(".i_" + i);
+// 	if(el_bti.innerHTML == "Инфа"){
+// 		alert(xhr.response);
+// 		el_i.innerHTML = xhr.response;
+// 	}
+// }
+
+// // 4. Этот код сработает после того, как мы получим ответ сервера
+// xhr.onload = function() {
+//   if (xhr.status != 200) { // анализируем HTTP-статус ответа, если статус не 200, то произошла ошибка
+//     alert(`Ошибка ${xhr.status}: ${xhr.statusText}`); // Например, 404: Not Found
+//   } else { // если всё прошло гладко, выводим результат
+//     alert(`Готово, получили ${xhr.response} байт`); // response -- это ответ сервера
+//   }
+// };
+
+// xhr.onprogress = function(event) {
+//   if (event.lengthComputable) {
+//     alert(`Получено ${event.loaded} из ${event.total} байт`);
+//   } else {
+//     alert(`Получено ${event.loaded} байт`); // если в ответе нет заголовка Content-Length
+//   }
+
+// };
+
+// xhr.onerror = function() {
+//   alert("Запрос не удался");
+// };
