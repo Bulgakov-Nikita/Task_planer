@@ -80,9 +80,9 @@ while($tt = $type->fetch_assoc()){
 					<input type='text' name='type_bt' style='display: none;' value='tasks'><br/>
 					<button name='del' value='$row[id]' style='width: 150px;'>delete</button>
 				</form><br/>
-				<button id='muBth' class='bt_cc'>Инфа</button>
-				<div id='menuAdd'>
-					Тут вся показывается иформация
+				<button id='muBth' class='bt_cc' name='".$row['id'].'-tasks'."'>Инфа</button>
+				<div id='menuAdd' style='color:black;'>
+					<!-- info -->
 				</div>
 			</div>
 		</div>";

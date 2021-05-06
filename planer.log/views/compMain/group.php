@@ -63,29 +63,11 @@
 						</div>
 						<form action='/main/delete' method='get'>
 							<input type='text' name='type_bt' style='display: none;' value='groups'><br/>
-							<button name='del' value='$group[id]' style='width: 150px;'>delete</button>
+							<button name='del' value='".$group['id']."' style='width: 150px;'>delete</button>
 						</form><br/>
-						<button id='muBth' class='bt_cc'>Инфа</button>
+						<button id='muBth' class='bt_cc' name='".$group['id'].'-'."groups'>Инфа</button>
 						<div id='menuAdd'>
-							<script>
-								// 1. Создаём новый объект XMLHttpRequest
-								var xhr = new XMLHttpRequest();
-						
-								// 2. Конфигурируем его: GET-запрос на URL 'phones.json'
-								xhr.open('GET', '/main/showInfo?type_bt=groups&group=".$group['id']."', false);
-						
-								// 3. Отсылаем запрос
-								xhr.send();
-						
-								// 4. Если код ответа сервера не 200, то это ошибка
-								if (xhr.status != 200) {
-									// обработать ошибку
-									documen.write( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
-								} else {
-									// вывести результат
-									document.write( xhr.responseText ); // responseText -- текст ответа.
-								}
-							</script>
+							<!-- info -->
 						</div>
 					</div>    
 					<button id='muBth' style='display: inline-block;'><img class='item-img' src='Img/add.png'></button>
