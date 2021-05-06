@@ -4,9 +4,9 @@
         //Аккаунт:
         if(isset($_COOKIE['login'])){
             echo "<p>Аккаунт: ".$_COOKIE['login'].' - '.$_COOKIE['id']."</p><br/>";
-            echo "<a id='muBth1' href='/auth/logout'>выход</a><br/>";
+            echo "<a id='muBth1' href='/auth/logout'>Выход</a><br/>";
         }else{
-            echo "<a id='muBth1' href='/auth/'>авториз</a>   ";
+            echo "<a id='muBth1' href='/auth/'>авторизация</a>   ";
             echo "<a id='muBth1' href='/reg/'>регистрация</a>";
         }
     ?>
