@@ -109,6 +109,8 @@ P{
 }
 #menuAdd, #menuAdd1, #menuAdd2, #menuAdd3, #menuAdd4, #menuAdd5, #menuAdd6 {
     border: 3px solid black;
+    min-width: 200px;
+    padding: 5px;
     /* width: 200px; */
     position: absolute;
     /* top: 25px; 

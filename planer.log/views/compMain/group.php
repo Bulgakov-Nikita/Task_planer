@@ -63,11 +63,11 @@
 						</div>
 						<form action='/main/delete' method='get'>
 							<input type='text' name='type_bt' style='display: none;' value='groups'><br/>
-							<button name='del' value='$group[id]' style='width: 150px;'>delete</button>
+							<button name='del' value='".$group['id']."' style='width: 150px;'>delete</button>
 						</form><br/>
-						<button id='muBth' class='bt_cc'>Инфа</button>
+						<button id='muBth' class='bt_cc' name='".$group['id'].'-'."groups'>Инфа</button>
 						<div id='menuAdd'>
-							Тут вся показывается иформация
+							<!-- info -->
 						</div>
 					</div>    
 					<button id='muBth' style='display: inline-block;'><img class='item-img' src='Img/add.png'></button>

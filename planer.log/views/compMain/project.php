@@ -85,9 +85,9 @@
 							<input type='text' name='type_bt' style='display: none;' value='projects'><br/>
 							<button name='del' value='$pr[id]' style='width: 150px;'>delete</button>
 						</form><br/>
-						<button id='muBth' class='bt_cc'>Инфа</button>
+						<button id='muBth' class='bt_cc' name='".$pr['id']."-projects'>Инфа</button>
 						<div id='menuAdd'>
-							Тут вся показывается иформация
+							<!-- info -->
 						</div>
 					</div>
 
