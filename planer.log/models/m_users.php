@@ -39,6 +39,12 @@
             echo "<script>document.location.replace('http://planer.log/');</script>";
         }
         public function edit(){
+            $t = new Query();
+            $t->update('users', 'name', $_POST['login'], 'id='.$_COOKIE['id']);
+            $t->update('users', 'password', $_POST['password'], 'id='.$_COOKIE['id']);
+            setcookie("login", $_POST['login'], time()+60*60*24, "/");
+            setcookie("password", $_POST['password'], time()+60*60*24, "/");
+            echo "<script>document.location.replace('http://planer.log/');</script>";
         }
         public function delete(){
         }

@@ -4,6 +4,7 @@
         //Аккаунт:
         if(isset($_COOKIE['login'])){
             echo "<p>Аккаунт: ".$_COOKIE['login'].' - '.$_COOKIE['id']."</p><br/>";
+            echo "<a id='nuBth1' href='/setting/'>редактировать аккаунт</a><br/>";
             echo "<a id='muBth1' href='/auth/'>войти в другой акк</a><br/>";
             echo "<a id='muBth1' href='/reg/'>регистрация</a>";
         }else{

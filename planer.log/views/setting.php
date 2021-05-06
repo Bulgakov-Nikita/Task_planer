@@ -1,5 +1,5 @@
 <h1>Редактирование аккаунта</h1>
-<form action="/setting/setting" method="post">
+<form action="/setting/set" method="post">
     Логин:
     <input type="text" name="login">
     <br/>
