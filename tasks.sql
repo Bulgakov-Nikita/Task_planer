@@ -1,4 +1,4 @@
-CREATE DATABASE tasks_db;
+CREATE DATABASE tasks_db CHARACTER SET utf8;
 USE tasks_db;
 
 CREATE TABLE type_task (
