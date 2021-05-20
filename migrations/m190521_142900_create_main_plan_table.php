@@ -2,17 +2,17 @@
 
 use \yii\db\Migration;
 
-class m190521_142600_create_main_plan_table extends Migration{
+class m190521_142900_create_main_plan_table extends Migration{
     public function safeUp(){
         $this->createTable('main_plan',[
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'fgos_id' => $this->integer()->noNull()->comment('id стандарта'),
-            'requsites_id' => $this->integer()->noNull()->comment('id реквизита'),
-            'sroc_obucheniya_id' => $this->integer()->noNull()->comment('id срока обучения'),
-            'level_obucheniya_id' => $this->integer()->noNull()->comment('id уровня обучения'),
-            'napravlenie_podgotovci_id' => $this->integer()->noNull()->comment('id направления'),
-            'forma_obucheniya_id' => $this->integer()->noNull()->comment('id формы обучения'),
-            'uchebniy_plan_id' => $this->integer()->noNull()->comment('id учебного плана')
+            'fgos_id' => $this->integer()->notNull()->comment('id стандарта'),
+            'requsites_id' => $this->integer()->notNull()->comment('id реквизита'),
+            'sroc_obucheniya_id' => $this->integer()->notNull()->comment('id срока обучения'),
+            'level_obucheniya_id' => $this->integer()->notNull()->comment('id уровня обучения'),
+            'napravlenie_podgotovci_id' => $this->integer()->notNull()->comment('id направления'),
+            'forma_obucheniya_id' => $this->integer()->notNull()->comment('id формы обучения'),
+            'uchebniy_plan_id' => $this->integer()->notNull()->comment('id учебного плана')
         ]);
         $this->addCommentOnTable('main_plan', 'Таблица которая хранит план, на основе других таблиц');
 
@@ -24,7 +24,7 @@ class m190521_142600_create_main_plan_table extends Migration{
             'requsites_id', 'main_plan', 'requsites_id', 'requsites', 'id'
         );
         $this->addForeignKey(
-            'sroc_obucheniya_id', 'main_plan', 'sroc_obucheniya_id', 'sroc_obucheniya', 'id'
+            'sroc_obucheniya_id1111', 'main_plan', 'sroc_obucheniya_id', 'sroc_obucheniya', 'id'
         );
         $this->addForeignKey(
             'level_obucheniya_id', 'main_plan', 'level_obucheniya_id', 'level_obucheniya', 'id'

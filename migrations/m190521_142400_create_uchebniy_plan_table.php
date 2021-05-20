@@ -9,12 +9,13 @@ class m190521_142400_create_uchebniy_plan_table extends Migration
     {
         $this->createTable('uchebniy_plan', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'god_postipleniya' => $this->notNull()->comment('Год поступления'),
-            'god_obucheniya' => $this->notNull()->comment('Год обучения'),
+            'god_postipleniya' => $this->integer()->notNull()->comment('Год поступления'),
+            'god_obucheniya' => $this->integer()->notNull()->comment('Год обучения'),
             'protocol' => $this->char(45)->notNull()->comment('Утверждение учебного плана'),
             'data_protocol' => $this->date()->notNull()->comment('Дата утверждения учебного плана'),
             'sroc_obucheniya_id' => $this->integer()->notNull()->comment('id срока обучения')
         ]);
+
         // Добавление FOREIGN KEY
         $this->addForeignKey(
             'sroc_obucheniya_id',

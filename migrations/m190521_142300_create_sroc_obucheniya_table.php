@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m190521_142300_create_sroc_obucheniya extends Migration
+class m190521_142300_create_sroc_obucheniya_table extends Migration
 {
     public function safeUp()
     {
