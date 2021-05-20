@@ -9,6 +9,14 @@ class m190521_142200_creat_podpisants_table extends Migration{
             'dolzhnost' => $this->char(150)->notNull()->comment('Должность подписанта'),
             'FIO' => $this->string()->notNull()->comment('фамилия имя отчество'),
             'utverzhdauchiy_id' => $this->integer(11)->notNull()->comment('id утверждающего'),
+            'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
+            'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
+            'update_at' => $this->integer(11)->notNull()->comment('дата редактирования'),
+            'update_by' => $this->integer(11)->notNull()->comment('кем радактировано'),
+            'delete_at' => $this->integer(11)->notNull()->comment('дата удаления'),
+            'delete_by' => $this->integer(11)->notNull()->comment('кем удалено'),
+            'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
+            'lock' => $this->integer(11)->notNull()->comment('блокировка'),
         ]);
         $this->addCommentOnTable('podpisants', 'для хранения ответственных за подписи');
         $this->addForeignKey(

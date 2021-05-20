@@ -12,6 +12,14 @@ class m190521_142200_creat_requsites_table extends Migration{
             'soglasovano' => $this->char()->notNull()->comment('Поле согласованость'),
             'god_nachala_podgotovki' => $this->integer(11)->notNull()->comment('Год начала подготовки'),
             'podpisants_id' => $this->integer(11)->notNull()->comment('Подписанты документов'),
+            'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
+            'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
+            'update_at' => $this->integer(11)->notNull()->comment('дата редактирования'),
+            'update_by' => $this->integer(11)->notNull()->comment('кем радактировано'),
+            'delete_at' => $this->integer(11)->notNull()->comment('дата удаления'),
+            'delete_by' => $this->integer(11)->notNull()->comment('кем удалено'),
+            'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
+            'lock' => $this->integer(11)->notNull()->comment('блокировка'),
 
         ]);
         $this->addCommentOnTable('requsites', 'для хранения реквизитов');
