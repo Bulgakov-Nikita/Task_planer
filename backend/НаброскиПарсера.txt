@@ -1,0 +1,46 @@
+models/ImportXml.php
+  public $file; # хранится ссылка на данные из xml-файла
+  public array $results; # ассоциативный массив с результатами парсинга
+  parse()
+  {
+  $xml = simplexml_load_string($file);
+  $results['type_works'] = $xml->XmlWays::way_to_type_works; # парсинг типа работы
+  # парсинг xml по различным путям (XmlWays::way_to и т.д.) и запись результатов в массив $results
+  }
+  saveFile()
+  {
+  # из массива $results происходит запись данных в БД и их сохранение 
+  } 
+
+
+models/XmlWays.php # модель со всеми путями
+  public $way_to_type_works = 'document->ООП->...';
+  ... # перечисление путей до всех полей таблиц
+
+
+controllers/ImportXmlController.php
+  actionImport() 
+  {
+    # отображение Views/ImportXml/Import.php и парсинг файла
+    $model = new ImportXml();
+    if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+ 	    $model->parse();
+            $model->save();
+            return $this->render('Index');
+    } else {
+	    return $this->render('Index');
+  }
+
+
+views/ImportXml/
+Import.php # форма для ввода файла
+
+
+
+
+
+
+
+
+
+
