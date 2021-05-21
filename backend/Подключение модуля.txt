@@ -1,0 +1,28 @@
+Подключение модуля
+1) Папку Parser перенести в \frontend\modules\admin
+2) В /common/config/main.php добавить
+'modules' => [
+        'parser' => [
+            'class' => 'app\modules\admin\Parser\Module',
+        ],
+    ],
+
+Настройка url
+1) В /common/config/main.php добавить 
+'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'enableStrictParsing' => false,
+            'rules' => [
+                // ...
+            ],
+        ],
+2) В \frontend\web создать файл .htaccess и добавить код
+Options +FollowSymLinks
+    IndexIgnore */*
+    RewriteEngine on
+	# if a directory or a file exists, use it directly
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	# otherwise forward it to index.php
+	RewriteRule . index.php
