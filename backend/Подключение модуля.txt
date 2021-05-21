@@ -1,6 +1,6 @@
 Подключение модуля
 1) Папку Parser перенести в \frontend\modules\admin
-2) В /common/config/main.php добавить
+2) В /common/config/main.php в корневом массиве return'a добавить
 'modules' => [
         'parser' => [
             'class' => 'app\modules\admin\Parser\Module',
@@ -8,7 +8,7 @@
     ],
 
 Настройка url
-1) В /common/config/main.php добавить 
+1) В /common/config/main.php в массив 'components' добавить 
 'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
