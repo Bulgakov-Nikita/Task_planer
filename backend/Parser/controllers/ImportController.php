@@ -15,6 +15,8 @@ class ImportController extends Controller
         if (Yii::$app->request->isPost) {
             $model->file = UploadedFile::getInstance($model, 'file');
             $model->parse();
+            // Перенаправление на начальную страницу. Отключено для проверки работы $model->parse();
+            // return $this->redirect('/');
         } else {
             // если файл не выбран
             return $this->render('import_file', ['model' => $model]);
