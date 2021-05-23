@@ -4,28 +4,43 @@ namespace app\modules\admin\Parser\models;
 
 use Yii;
 use yii\base\Model;
-use app\modules\admin\Parser\models\Paths;
 
-class Parser extends Model {
+class Parser extends Model{
     public $file;
-    public $results = []; // сюда должны будут сохраняться результаты парсинга, скорее всего это будет двумерный ассоциативный массив
+    private $xml;
 
-    public function parse() {
-        /* Пример работы функции parse(). Она получает введёный пользователем файл и
-         * парсит его, выводя коды планов компетенции. В будующем все данные должны записываться
-         * в БД
+    private function parse_fgos_table() {
+        /* Функция для заполнения таблицы fgos.
+         * Используется модель Fgos.php для доступа к БД
          */
-        $data = file_get_contents($this->file->tempName);
-        $xml = new \SimpleXMLElement($data);
-        $path = $xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->ПланыКомпетенции;
 
-        echo 'Коды всех планов компетенции: ';
-        foreach ($path as $p) {
-            echo ' ' . $p['Код'];
-        }
+        $table = new tables\Fgos();
+        $path = eval(Paths::$path_to_Планы);
+
+        $table->number = $path['НомерФГОС'];
+        $table->date = $path['ДатаГОСа'];
+        $table->path_file = 'null';
+
+        $table->create_at = 1; // для теста, потом сделать нормально
+        $table->create_by = 1; // для теста, потом сделать нормально
+        $table->update_at = 1; // для теста, потом сделать нормально
+        $table->update_by = 1; // для теста, потом сделать нормально
+        $table->delete_at = 1; // для теста, потом сделать нормально
+        $table->delete_by = 1; // для теста, потом сделать нормально
+        $table->active = 1; // для теста, потом сделать нормально
+        $table->lock = 1; // для теста, потом сделать нормально
+
+        $table->save(); // сохранение результатов парсинга
     }
 
-    public function save_data() {
+    public function parse() {
+        /* Эта функция получает файл от пользователя и запускает
+         * функции парсинга таблиц для их заполнения
+         */
+        $data = file_get_contents($this->file->tempName);
+        $this->xml = new \SimpleXMLElement($data);
 
+        // вызов функций для парсинга (пока только одна)
+        $this->parse_fgos_table();
     }
 }
