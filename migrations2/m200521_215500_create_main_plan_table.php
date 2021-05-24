@@ -8,7 +8,7 @@ class m200521_215500_create_main_plan_table extends Migration{
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'date_sp' => $this->date()->notNull()->comment('год начала подготовки'),
             'date_education' => $this->date()->notNull()->comment('год обучения'),
-            'date_ut' => $this->date()->notNull()->comment('дата утверждения'),
+            'date_ut' => $this->date()->comment('дата утверждения'),
             'name_or' => $this->text()->notNull()->comment('название организации'),
             'name_ministry' => $this->text()->notNull()->comment('название министерства'),
             'n_protocol' => $this->string(45)->notNull()->comment('номер протокола'),
@@ -24,8 +24,8 @@ class m200521_215500_create_main_plan_table extends Migration{
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
             'update_by' => $this->integer(11)->notNull()->comment('кем создано'),
-            'delete_at' => $this->integer(11)->notNull()->comment('дата удаления'),
-            'delete_by' => $this->integer(11)->notNull()->comment('кем удалено'),
+            'delete_at' => $this->integer(11)->comment('дата удаления'),
+            'delete_by' => $this->integer(11)->comment('кем удалено'),
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
