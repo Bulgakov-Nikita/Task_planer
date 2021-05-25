@@ -1,0 +1,20 @@
+1. клон с gitlab
+2. настройка .env
+
+Изменить строчку в assets:
+...
+# Application
+# -----------
+LINK_ASSETS=false #for windows
+...
+
+Настроить подключение к БД #Databases
+Настроить адреса #Urls
+
+3. поочерёдно выполнять команды:
+	1. composer update(composer install)
+	2. npm install
+	3. php console/yii app/setup
+	4. npm run build
+
+
