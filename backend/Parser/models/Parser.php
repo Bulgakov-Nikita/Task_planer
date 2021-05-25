@@ -23,8 +23,6 @@ class Parser extends Model {
         $table->create_by = Yii::$app->user->getId();
         $table->update_at = time();
         $table->update_by = Yii::$app->user->getId();
-        $table->delete_at = 1;
-        $table->delete_by = 1;
         $table->active = 1;
         $table->lock = 1;
 
@@ -41,14 +39,11 @@ class Parser extends Model {
 
             $table->index = $p['ШифрКомпетенции'];
             $table->soderzhanie = $p['Наименование'];
-            $table->type_comp_id = 1;
 
             $table->create_at = time();
             $table->create_by = Yii::$app->user->getId();
             $table->update_at = time();
             $table->update_by = Yii::$app->user->getId();
-            $table->delete_at = 1;
-            $table->delete_by = 1;
             $table->active = 1;
             $table->lock = 1;
 
@@ -64,14 +59,13 @@ class Parser extends Model {
         foreach ($path as $p) {
             $table = new tables\Institut();
 
-            $table->name = $path['Полное_название'];
+            $table->name = $p['Полное_название'];
+            $table->code_filiala = $p['Код_филиала'];
 
             $table->create_at = time();
             $table->create_by = Yii::$app->user->getId();
             $table->update_at = time();
             $table->update_by = Yii::$app->user->getId();
-            $table->delete_at = 1;
-            $table->delete_by = 1;
             $table->active = 1;
             $table->lock = 1;
 
@@ -82,23 +76,31 @@ class Parser extends Model {
     }
 
     private function parse_facultet_table() {
-        $table = new tables\Facultet();
         $path = eval(Paths::$path_to_Факультеты);
 
-        $table->name = $path['Факультет'];
-        //$table->institut_id = (new tables\institut);
+        foreach ($path as $p) {
+            $table = new tables\Facultet();
 
-        $table->create_at = time();
-        $table->create_by = Yii::$app->user->getId();
-        $table->update_at = time();
-        $table->update_by = Yii::$app->user->getId();
-        $table->delete_at = 1;
-        $table->delete_by = 1;
-        $table->active = 1;
-        $table->lock = 1;
+            $name = (string) $p['Факультет'];
+            $filial_code = (int) $p['Код_филиала'];
+            $institut_id = (tables\Institut::findOne(['code_filiala' => $filial_code]))->id;
 
-        if (!$table->save()) {
-            $this->not_parse_errors = false;
+            // проверка уникальности
+            if (tables\Facultet::findOne(['name' => $name, 'institut_id' => $institut_id])) { continue; }
+
+            $table->name = $name;
+            $table->institut_id = $institut_id;
+
+            $table->create_at = time();
+            $table->create_by = Yii::$app->user->getId();
+            $table->update_at = time();
+            $table->update_by = Yii::$app->user->getId();
+            $table->active = 1;
+            $table->lock = 1;
+
+            if (!$table->save()) {
+                $this->not_parse_errors = false;
+            }
         }
     }
 
@@ -178,13 +180,13 @@ class Parser extends Model {
 
         $transaction = Yii::$app->db->beginTransaction();
 
-        // сделано*
-     //   $this->parse_fgos_table();
-     //   $this->parse_comp_table();
+        // сделано
+       // $this->parse_fgos_table();
+       // $this->parse_comp_table();
+       //   $this->parse_institut_table();
+          $this->parse_facultet_table();
 
         // в процессе
-     //   $this->parse_institut_table(); // необходимо добавить атрибут Код_филиала
-        $this->parse_facultet_table(); // используется код филиала для внешнего ключа на institut_id
 
         // не готово
 //        $this->parse_comp2_table();

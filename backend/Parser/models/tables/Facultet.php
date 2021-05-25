@@ -14,12 +14,15 @@ use Yii;
  * @property int $create_by кем создано
  * @property int $update_at дата обновления
  * @property int $update_by кем создано
- * @property int $delete_at дата удаления
- * @property int $delete_by кем удалено
+ * @property int|null $delete_at дата удаления
+ * @property int|null $delete_by кем удалено
  * @property int $active статус
  * @property int $lock блокировка
  *
+ * @property User $createBy
+ * @property User $deleteBy
  * @property Institut $institut
+ * @property User $updateBy
  * @property Kafedra[] $kafedras
  */
 class Facultet extends \yii\db\ActiveRecord
@@ -61,6 +64,26 @@ class Facultet extends \yii\db\ActiveRecord
     }
 
     /**
+     * Gets query for [[CreateBy]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCreateBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'create_by']);
+    }
+
+    /**
+     * Gets query for [[DeleteBy]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDeleteBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'delete_by']);
+    }
+
+    /**
      * Gets query for [[Institut]].
      *
      * @return \yii\db\ActiveQuery
@@ -68,6 +91,16 @@ class Facultet extends \yii\db\ActiveRecord
     public function getInstitut()
     {
         return $this->hasOne(Institut::className(), ['id' => 'institut_id']);
+    }
+
+    /**
+     * Gets query for [[UpdateBy]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUpdateBy()
+    {
+        return $this->hasOne(User::className(), ['id' => 'update_by']);
     }
 
     /**

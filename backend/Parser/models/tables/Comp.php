@@ -10,19 +10,20 @@ use Yii;
  * @property int $id Первичный ключ
  * @property string $index индекс
  * @property string $soderzhanie содержание
- * @property int $type_comp_id ссылка на план
  * @property int $create_at дата создания
  * @property int $create_by кем создано
  * @property int $update_at дата обновления
  * @property int $update_by кем создано
- * @property int $delete_at дата удаления
- * @property int $delete_by кем удалено
+ * @property int|null $delete_at дата удаления
+ * @property int|null $delete_by кем удалено
  * @property int $active статус
  * @property int $lock блокировка
  *
- * @property TypeComp $typeComp
- * @property Comp2[] $comp2s
- * @property Comp3[] $comp3s
+ * @property User $createBy
+ * @property User $deleteBy
+ * @property User $updateBy
+ * @property CompPsHasComp[] $compPsHasComps
+ * @property Dc[] $dcs
  * @property Kk[] $kks
  */
 class Comp extends \yii\db\ActiveRecord
@@ -52,7 +53,6 @@ class Comp extends \yii\db\ActiveRecord
             'id' => 'ID',
             'index' => 'Index',
             'soderzhanie' => 'Soderzhanie',
-            'type_comp_id' => 'Type Comp ID',
             'create_at' => 'Create At',
             'create_by' => 'Create By',
             'update_at' => 'Update At',
@@ -65,33 +65,53 @@ class Comp extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[TypeComp]].
+     * Gets query for [[CreateBy]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getTypeComp()
+    public function getCreateBy()
     {
-        return $this->hasOne(TypeComp::className(), ['id' => 'type_comp_id']);
+        return $this->hasOne(User::className(), ['id' => 'create_by']);
     }
 
     /**
-     * Gets query for [[Comp2s]].
+     * Gets query for [[DeleteBy]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getComp2s()
+    public function getDeleteBy()
     {
-        return $this->hasMany(Comp2::className(), ['comp_id' => 'id']);
+        return $this->hasOne(User::className(), ['id' => 'delete_by']);
     }
 
     /**
-     * Gets query for [[Comp3s]].
+     * Gets query for [[UpdateBy]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getComp3s()
+    public function getUpdateBy()
     {
-        return $this->hasMany(Comp3::className(), ['comp_id' => 'id']);
+        return $this->hasOne(User::className(), ['id' => 'update_by']);
+    }
+
+    /**
+     * Gets query for [[CompPsHasComps]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCompPsHasComps()
+    {
+        return $this->hasMany(CompPsHasComp::className(), ['comp_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Dcs]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getDcs()
+    {
+        return $this->hasMany(Dc::className(), ['comp_id' => 'id']);
     }
 
     /**
