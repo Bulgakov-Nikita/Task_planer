@@ -10,6 +10,7 @@ class m240521_210500_create_comp_table extends Migration
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'index' => $this->string(45)->notNull()->comment('индекс'),
             'soderzhanie' => $this->text()->notNull()->comment('содержание'),
+            'main_plan_id' => $this->integer()->notNull()->comment('id для учебного плана'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -42,10 +43,18 @@ class m240521_210500_create_comp_table extends Migration
             'user',
             'id'
         );
+        $this->addForeignKey(
+            'FK_main_plan_id_comp_id',
+            'comp',
+            'main_plan_id',
+            'main_plan',
+            'id'
+        );
     }
 
     public function safeDown()
     {
         $this->dropTable('comp');
+        // сделать удаление внешних ключей
     }
 }
