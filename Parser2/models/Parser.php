@@ -250,6 +250,25 @@ class Parser extends Model {
 
         }
     }
+    private function parse_sroc_education_table() {
+        $path = eval(Paths::$path_to_Планы);
+        $table = new tables\SrocEducation();
+
+        $name = (string) $path['СрокОбучения'];
+        if (tables\SrocEducation::find()->andWhere(['name' => $name])->count() == 1) { return; }
+        $table->name = $name;
+
+        $table->create_at = time();
+        $table->create_by = Yii::$app->user->getId();
+        $table->update_at = time();
+        $table->update_by = Yii::$app->user->getId();
+        $table->active = 1;
+        $table->lock = 1;
+
+        if (!$table->save()) {
+            $this->not_parse_errors = false;
+        }
+    }
 
     private function parse_comp2_table() {
     }
@@ -276,9 +295,6 @@ class Parser extends Model {
     }
 
     private function parse_session_table() {
-    }
-
-    private function parse_sroc_education_table() {
     }
 
     private function parse_type_session_table() {
@@ -321,6 +337,7 @@ class Parser extends Model {
 
         // в процессе
 //        $this->parse_np_table();
+        $this->parse_sroc_education_table();
 
 
 
@@ -336,7 +353,7 @@ class Parser extends Model {
 //        $this->parse_podpisants_table();
 //        $this->parse_prof_standart_table();
 //        $this->parse_session_table(]);
-//        $this->parse_sroc_education_table();
+       
 
 
 //        $this->parse_type_session_table();
