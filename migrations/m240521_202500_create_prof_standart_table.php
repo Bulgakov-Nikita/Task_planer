@@ -10,6 +10,7 @@ class m240521_202500_create_prof_standart_table extends Migration
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'date' => $this->date()->notNull()->comment('дата проф стандарта'),
             'number' => $this->string(45)->notNull()->comment('номер проф стандарта'),
+            
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),

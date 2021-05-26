@@ -9,6 +9,7 @@ class m240521_201000_create_fgos_table extends Migration{
             'number' => $this->string(45)->notNull()->comment('номер ФГОС'),
             'date' => $this->date()->notNull()->comment('дата ФГОС'),
             'path_file' => $this->text()->comment('ссылка на файл'),
+
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),

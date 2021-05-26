@@ -8,7 +8,7 @@ class m240521_203500_create_type_task_pd_table extends Migration
     {
         $this->createTable('type_task_pd', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->text()->notNull()->comment('Тип задачи проф деятельности'),
+            'name' => $this->string(45)->notNull()->comment('Тип задачи проф деятельности'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),

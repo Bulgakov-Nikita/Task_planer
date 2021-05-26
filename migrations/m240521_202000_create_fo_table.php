@@ -7,6 +7,7 @@ class m240521_202000_create_fo_table extends Migration{
         $this->createTable('fo',[
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'name' => $this->string(45)->notNull()->comment('(очная, заочная) названи формы обучения'),
+
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),

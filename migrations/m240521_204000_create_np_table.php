@@ -10,8 +10,8 @@ class m240521_204000_create_np_table extends Migration
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'code' => $this->string(45)->notNull()->comment('Код'),
             'name' => $this->string(45)->notNull()->comment('Название направления подготовки'),
-            'comp_ps_id' => $this->integer()->comment('ссылка на проф стандарт'),
             'type_task_pd_id' => $this->integer()->notNull()->comment('ссылка на Тип задачи проф деятельности'),
+            'comp_ps_id' => $this->integer()->comment('ссылка на проф стандарт'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),

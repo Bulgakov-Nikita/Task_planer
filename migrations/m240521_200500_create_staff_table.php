@@ -8,7 +8,12 @@ class m240521_200500_create_staff_table extends Migration
     {
         $this->createTable('staff', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'FIO' => $this->text()->notNull()->comment('Фамилия имя отчество'),
+            'F' => $this->string(100)->notNull()->comment('Фамилия имя отчество Ф'),
+            'I' => $this->string(100)->notNull()->comment('Фамилия имя отчество И'),
+            'O' => $this->sring(100)->notNull()->comment('Фамилия имя отчество О'),
+            'o' => $this->text()->notNull()->comment('о?'),
+            'user_id' => $this->integer()->comment('юзер id'),
+
             'post' => $this->text()->notNull()->comment('должность'),
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
