@@ -8,7 +8,7 @@ class m240521_212000_create_type_work_table extends Migration
     {
         $this->createTable('type_work', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->comment('Тип работы'),
+            'name' => $this->string(250)->notNull()->comment('Тип работы'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
