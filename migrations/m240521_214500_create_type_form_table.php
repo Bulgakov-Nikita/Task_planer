@@ -8,7 +8,7 @@ class m240521_214500_create_type_form_table extends Migration
     {
         $this->createTable('type_form', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->unique()->notNull()->comment('тип формы'),
+            'name' => $this->string(45)->notNull()->comment('тип формы'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),

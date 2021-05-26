@@ -8,7 +8,7 @@ class m240521_213000_create_kurs_table extends Migration
     {
         $this->createTable('kurs', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'number_kurs' => $this->integer()->notNull()->unique()->comment('Номер курса'),
+            'number_kurs' => $this->integer()->notNull()->comment('Номер курса'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),

@@ -6,7 +6,7 @@ class m240521_201500_create_kvalification_table extends Migration{
     public function safeUp(){
         $this->createTable('kvalification',[
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(20)->notNull()->unique()->comment('название квалификация (бакалавр, магистратура, апирантура)'),
+            'name' => $this->string(20)->notNull()->comment('название квалификация (бакалавр, магистратура, апирантура)'),
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),

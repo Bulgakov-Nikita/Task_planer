@@ -8,7 +8,7 @@ class m240521_212500_create_type_session_table extends Migration
     {
         $this->createTable('type_session', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->unique()->comment('Тип сессии'),
+            'name' => $this->string(45)->notNull()->comment('Тип сессии'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
