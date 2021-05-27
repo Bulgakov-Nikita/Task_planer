@@ -20,27 +20,29 @@ class m240521_213000_create_kurs_table extends Migration
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('kurs', 'Таблица для хранения информации о кусах');
-        $this->addForeignKey(
-            'FK_c_kurs_id',
-            'kurs',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_kurs_id',
-            'kurs',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_kurs_id',
-            'kurs',
-            'delete_by',
-            'user',
-            'id'
-        );
+
+        // FK:
+        // $this->addForeignKey(
+        //     'FK_c_kurs_id',
+        //     'kurs',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_kurs_id',
+        //     'kurs',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_kurs_id',
+        //     'kurs',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
     
     public function safeDown()

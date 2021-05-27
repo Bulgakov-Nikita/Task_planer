@@ -6,7 +6,7 @@ class m240521_211500_create_kaf_has_comp_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('kk', [
+        $this->createTable('kaf_has_comp', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'comp_id' => $this->integer()->notNull()->comment('ссылка на компетенцию'),
             'sprav_kafedra_id' => $this->integer()->notNull()->comment('ссылка на кафедру'),
@@ -20,18 +20,18 @@ class m240521_211500_create_kaf_has_comp_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('kk', 'Таблица для хранения информации о ссылках на кафедру и компетенцию');
+        $this->addCommentOnTable('kaf_has_comp', 'Таблица для хранения информации о ссылках на кафедру и компетенцию');
 
         //FK
         $this->addForeignKey(
             'FK_comp_id111333',
-            'kk',
+            'kaf_has_comp',
             'comp_id',
             'comp',
             'id');
         $this->addForeignKey(
             'FK_kafedra_id111333',
-            'kk',
+            'kaf_has_comp',
             'sprav_kafedra_id',
             'sprav_kafedra',
             'id'
@@ -61,7 +61,7 @@ class m240521_211500_create_kaf_has_comp_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('kk');
+        $this->dropTable('kaf_has_comp');
         
         //FK
         $this->dropForeignKey('FK_comp_id111333', 'comp');

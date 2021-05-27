@@ -32,27 +32,27 @@ class m240521_222000_create_period_table extends Migration
             'type_periods',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_period_id',
-            'period',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_period_id',
-            'period',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_period_id',
-            'period',
-            'delete_by',
-            'user',
-            'id'
-        );
+        // $this->addForeignKey(
+        //     'FK_c_period_id',
+        //     'period',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_period_id',
+        //     'period',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_period_id',
+        //     'period',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
 
     public function safeDown()

@@ -44,27 +44,27 @@ class m240521_214000_create_session_table extends Migration
             'plan',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_session_id',
-            'session',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_session_id',
-            'session',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_session_id',
-            'session',
-            'delete_by',
-            'user',
-            'id'
-        );
+        // $this->addForeignKey(
+        //     'FK_c_session_id',
+        //     'session',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_session_id',
+        //     'session',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_session_id',
+        //     'session',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
 
     }
 

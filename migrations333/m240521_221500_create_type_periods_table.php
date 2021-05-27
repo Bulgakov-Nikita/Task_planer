@@ -18,27 +18,29 @@ class m240521_221500_create_type_periods_table extends Migration{
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('type_periods', 'Таблица которая хранит тип периода');
-        $this->addForeignKey(
-            'FK_c_type_periods_id',
-            'type_periods',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_type_periods_id',
-            'type_periods',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_type_periods_id',
-            'type_periods',
-            'delete_by',
-            'user',
-            'id'
-        );
+
+        // FK:
+        // $this->addForeignKey(
+        //     'FK_c_type_periods_id',
+        //     'type_periods',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_type_periods_id',
+        //     'type_periods',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_type_periods_id',
+        //     'type_periods',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
 
     public function safeDown(){

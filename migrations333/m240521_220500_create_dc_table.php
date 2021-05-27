@@ -37,27 +37,27 @@ class m240521_220500_create_dc_table extends Migration
             'disciplins',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_dc_id',
-            'dc',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_dc_id',
-            'dc',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_dc_id',
-            'dc',
-            'delete_by',
-            'user',
-            'id'
-        );
+        // $this->addForeignKey(
+        //     'FK_c_dc_id',
+        //     'dc',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_dc_id',
+        //     'dc',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_dc_id',
+        //     'dc',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
 
     public function safeDown()

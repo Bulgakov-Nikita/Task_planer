@@ -8,7 +8,7 @@ class m240521_212000_create_type_work_table extends Migration
     {
         $this->createTable('type_work', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(250)->notNull()->comment('Тип работы'),
+            'name' => $this->string(45)->notNull()->comment('Тип работы'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -20,27 +20,29 @@ class m240521_212000_create_type_work_table extends Migration
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('type_work', 'Таблица для хранения информации о Типах работы');
-        $this->addForeignKey(
-            'FK_c_type_work_id',
-            'type_work',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_type_work_id',
-            'type_work',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_type_work_id',
-            'type_work',
-            'delete_by',
-            'user',
-            'id'
-        );
+
+        //FK:
+        // $this->addForeignKey(
+        //     'FK_c_type_work_id',
+        //     'type_work',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_type_work_id',
+        //     'type_work',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_type_work_id',
+        //     'type_work',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
 
     }
 

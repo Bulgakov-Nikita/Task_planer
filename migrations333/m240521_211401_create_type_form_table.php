@@ -20,27 +20,27 @@ class m240521_211401_create_type_form_table extends Migration
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('type_form', 'Таблица для хранения информации о типе формы');
-        $this->addForeignKey(
-            'FK_c_type_form_id',
-            'type_form',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_type_form_id',
-            'type_form',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_type_form_id',
-            'type_form',
-            'delete_by',
-            'user',
-            'id'
-        );
+        // $this->addForeignKey(
+        //     'FK_c_type_form_id',
+        //     'type_form',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_type_form_id',
+        //     'type_form',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_type_form_id',
+        //     'type_form',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
 
     public function safeDown()

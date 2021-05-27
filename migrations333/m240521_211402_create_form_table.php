@@ -34,31 +34,31 @@ class m240521_211402_create_form_table extends Migration
         $this->addForeignKey(
             'FK_plan_id321',
             'form',
-            'plan_id',
-            'plan',
+            'type_form_id',
+            'type_form',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_form_id',
-            'form',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_form_id',
-            'form',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_form_id',
-            'form',
-            'delete_by',
-            'user',
-            'id'
-        );
+        // $this->addForeignKey(
+        //     'FK_c_form_id',
+        //     'form',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_form_id',
+        //     'form',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_form_id',
+        //     'form',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
 
     public function safeDown()
@@ -66,7 +66,7 @@ class m240521_211402_create_form_table extends Migration
         $this->dropTable('form');
 
         //FK
-        $this->dropForeignKey('FK_type_form_id321', 'type_form');
-        $this->dropForeignKey('FK_plan_id321', 'plan');
+        $this->dropForeignKey('FK_type_form_id321', 'disciplin');
+        $this->dropForeignKey('FK_plan_id321', 'type_form');
     }
 }

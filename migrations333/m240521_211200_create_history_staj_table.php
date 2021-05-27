@@ -21,7 +21,7 @@ class m240521_211200_create_history_staj_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('period', 'Таблица для хранения информации о периоде');
+        $this->addCommentOnTable('history_staj', 'Таблица для хранения истории работы для опрелелённого преподавателя');
 
         //FK
         $this->addForeignKey(
@@ -32,27 +32,27 @@ class m240521_211200_create_history_staj_table extends Migration
             'id'
         );
 
-        $this->addForeignKey(
-            'FK_c_period_id',
-            'prep_rekv',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_period_id',
-            'period',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_period_id',
-            'period',
-            'delete_by',
-            'user',
-            'id'
-        );
+        // $this->addForeignKey(
+        //     'FK_c_period_id',
+        //     'prep_rekv',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_period_id',
+        //     'period',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_period_id',
+        //     'period',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
 
     public function safeDown()
@@ -60,7 +60,7 @@ class m240521_211200_create_history_staj_table extends Migration
         $this->dropTable('period');
 
         //FK
-        $this->dropForeigenKey('FK_type_periods_id444111', 'type_periods');
+        $this->dropForeigenKey('FK_c_history_staj', 'staj');
     }
 }
 

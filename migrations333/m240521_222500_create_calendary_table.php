@@ -45,27 +45,27 @@ class m240521_222500_create_calendary_table extends Migration
             'main_plan',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_calendary_id',
-            'calendary',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_calendary_id',
-            'calendary',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_calendary_id',
-            'calendary',
-            'delete_by',
-            'user',
-            'id'
-        );
+        // $this->addForeignKey(
+        //     'FK_c_calendary_id',
+        //     'calendary',
+        //     'create_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_u_calendary_id',
+        //     'calendary',
+        //     'update_by',
+        //     'user',
+        //     'id'
+        // );
+        // $this->addForeignKey(
+        //     'FK_d_calendary_id',
+        //     'calendary',
+        //     'delete_by',
+        //     'user',
+        //     'id'
+        // );
     }
 
     public function safeDown()
