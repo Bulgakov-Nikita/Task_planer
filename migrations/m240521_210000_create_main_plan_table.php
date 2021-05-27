@@ -7,6 +7,7 @@ class m240521_210000_create_main_plan_table extends Migration{
         $this->createTable('main_plan',[
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'date_sp' => $this->date()->notNull()->comment('год начала подготовки'),
+            'date_education' => $this->string(20)->notNull()->comment('год обучения'),
             'date_ut' => $this->date()->comment('дата утверждения'),
             'name_or' => $this->text()->notNull()->comment('название организации'),
             'name_ministry' => $this->text()->notNull()->comment('название министерства'),
@@ -14,12 +15,11 @@ class m240521_210000_create_main_plan_table extends Migration{
             'date_protocol' => $this->date()->notNull()->comment('дата протокола'),
             'fgos_id' => $this->integer()->notNull()->comment('id стандарта'),
             'sprav_kafedra_id' => $this->integer()->notNull()->comment('id реквизита'),
-            'kvalification_id' => $this->integer()->comment('id уровня обучения'),
+            'kvalification_id' => $this->integer()->notNull()->comment('id уровня обучения'),
             'np_id' => $this->integer()->notNull()->comment('id направления'),
             'fo_id' => $this->integer()->notNull()->comment('id формы обучения'),
             'staff_id' => $this->integer()->notNull()->comment(''),
             'sroc_education_id' => $this->integer()->notNull()->comment('id срока обучения'),
-            'sprav_uch_god_id' => $this->integer()->notNull()->comment('id учебного года'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -37,7 +37,7 @@ class m240521_210000_create_main_plan_table extends Migration{
             'fgos_id', 'main_plan', 'fgos_id', 'fgos', 'id'
         );
         $this->addForeignKey(
-            'kafedra_id', 'main_plan', 'sprav_kafedra_id', 'sprav_kafedra', 'id'
+            'sprav_kafedra_id', 'main_plan', 'sprav_kafedra_id', 'sprav_kafedra', 'id'
         );
         $this->addForeignKey(
             'kvalification_id', 'main_plan', 'kvalification_id', 'kvalification', 'id'
@@ -55,29 +55,26 @@ class m240521_210000_create_main_plan_table extends Migration{
             'sroc_obucheniya_id1111', 'main_plan', 'sroc_education_id', 'sroc_education', 'id'
         );
         $this->addForeignKey(
-            'sprav_uch_god_id1111', 'main_plan', 'sprav_uch_god_id', 'sprav_uch_god', 'id'
+            'FK_c_main_plan_id',
+            'main_plan',
+            'create_by',
+            'user',
+            'id'
         );
-//        $this->addForeignKey(
-//            'FK_c_main_plan_id',
-//            'main_plan',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_main_plan_id',
-//            'main_plan',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_main_plan_id',
-//            'main_plan',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_u_main_plan_id',
+            'main_plan',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_main_plan_id',
+            'main_plan',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown(){
@@ -85,12 +82,11 @@ class m240521_210000_create_main_plan_table extends Migration{
 
         //DELETE FOREIGN KEYS
         $this->dropForeignKey('fgos_id', 'fgos');
-        $this->dropForeignKey('kafedra_id', 'sprav_kafedra');
+        $this->dropForeignKey('sprav_kafedra_id', 'sprav_kafedra');
         $this->dropForeignKey('kvalification_id', 'kvalification');
         $this->dropForeignKey('np_id', 'np');
         $this->dropForeignKey('fo_id', 'fo');
         $this->dropForeignKey('staff_id', 'staff');
         $this->dropForeignKey('sroc_obucheniya_id1111', 'sroc_obucheniya');
-        $this->dropForeignKey('sprav_uch_god_id1111', 'sprav_uch_god');
     }
 }

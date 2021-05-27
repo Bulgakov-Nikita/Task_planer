@@ -2,14 +2,15 @@
 
 use \yii\db\Migration;
 
-class m240521_211000_create_comp_ps_has_comp_table extends Migration
+class m240521_213500_create_plan_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('comp_ps_has_comp', [
+        $this->createTable('plan', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'comp_id' => $this->integer()->notNull()->comment('ссылка на компетенции'),
-            'comp_ps_id' => $this->integer()->notNull()->comment('ссылка на компетенции 3'),
+            'main_plan_id' => $this->integer()->notNull()->comment('ссылка на компетенцию 2'),
+            'kurs_id' => $this->integer()->notNull()->comment('ссылка на курсы'),
+            'sprav_kafedra_id' => $this->integer()->notNull()->comment('ссылка на кафедру'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -20,52 +21,61 @@ class m240521_211000_create_comp_ps_has_comp_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('comp_ps_has_comp', 'Таблица для хранения информации о компетенции и компетенции 3');
+        $this->addCommentOnTable('plan', 'Таблица для хранения информации о Плане');
 
         //FK
         $this->addForeignKey(
-            'FK_comp_id_cc3_id',
-            'comp_ps_has_comp',
-            'comp_id',
-            'comp',
+            'FK_comp2_id333',
+            'plan',
+            'main_plan_id',
+            'main_plan',
             'id'
         );
         $this->addForeignKey(
-            'FK_comp3_id_cc3_id',
-            'comp_ps_has_comp',
-            'comp_ps_id',
-            'comp_ps',
+            'FK_spravochnic2_id333',
+            'plan',
+            'kurs_id',
+            'kurs',
             'id'
         );
         $this->addForeignKey(
-            'FK_c_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
+            'FK_sprav_kafedra_id333',
+            'plan',
+            'sprav_kafedra_id',
+            'sprav_kafedra',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_c_plan_id',
+            'plan',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
+            'FK_u_plan_id',
+            'plan',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
+            'FK_d_plan_id',
+            'plan',
             'delete_by',
             'user',
             'id'
         );
+
     }
 
     public function safeDown()
     {
-        $this->dropTable('comp_ps_has_comp');
+        $this->dropTable('plan');
 
         //FK
-        $this->dropForeigenKey('FK_comp_id_cc3_id', 'comp_id');
-        $this->dropForeigenKey('FK_comp3_id_cc3_id', 'comp_ps');
+        $this->dropForeignKey('FK_comp2_id333', 'main_plan');
+        $this->dropForeignKey('FK_spravochnic2_id333', 'kurs');
+        $this->dropForeignKey('FK_sprav_kafedra_id333', 'kafedra');
     }
 }

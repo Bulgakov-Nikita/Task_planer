@@ -2,14 +2,15 @@
 
 use \yii\db\Migration;
 
-class m240521_203500_create_type_task_pd_table extends Migration
+class m240521_215500_create_sprav_dis_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('type_task_pd', [
+        $this->createTable('sprav_dis', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->comment('Тип задачи проф деятельности'),
-            
+            'name' => $this->string(45)->notNull()->comment('тип дисциплины'),
+            'sprav_kafedra_id' => $this->integer()->comment('Ссылка на кафедру'),
+
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
@@ -19,24 +20,33 @@ class m240521_203500_create_type_task_pd_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('type_task_pd', 'Таблица для хранения информации о Типе задач проф деятельности');
+        $this->addCommentOnTable('sprav_dis', 'Таблица для хранения информации о типе дисциплины');
+        
+        //FK
         $this->addForeignKey(
-            'FK_c_type_task_pd_id',
-            'type_task_pd',
+            'FK_kafedra_id_sprav_dis_id',
+            'sprav_dis',
+            'sprav_kafedra_id',
+            'sprav_kafedra',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_c_sprav_dis_id',
+            'sprav_dis',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_type_task_pd_id',
-            'type_task_pd',
+            'FK_u_sprav_dis_id',
+            'sprav_dis',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_type_task_pd_id',
-            'type_task_pd',
+            'FK_d_sprav_dis_id',
+            'sprav_dis',
             'delete_by',
             'user',
             'id'
@@ -45,6 +55,9 @@ class m240521_203500_create_type_task_pd_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('type_task_pd');
+        $this->dropTable('sprav_dis');
+
+        //FK
+        $this->dropForeigenKey('FK_sprav_kafedra_id_sprav_dis_id', 'kafedra');
     }
 }

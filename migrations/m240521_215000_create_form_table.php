@@ -2,14 +2,16 @@
 
 use \yii\db\Migration;
 
-class m240521_203500_create_type_task_pd_table extends Migration
+class m240521_215000_create_form_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('type_task_pd', [
+        $this->createTable('form', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->comment('Тип задачи проф деятельности'),
-            
+            'data' => $this->string(45)->notNull()->comment('данные'),
+            'type_form_id' => $this->integer()->notNull()->comment('ссылка на тип формы'),
+            'plan_id' => $this->integer()->notNull()->comment('ссылка на план'),
+
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
@@ -19,24 +21,40 @@ class m240521_203500_create_type_task_pd_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('type_task_pd', 'Таблица для хранения информации о Типе задач проф деятельности');
+        $this->addCommentOnTable('form', 'Таблица для хранения информации о форме');
+
+        //FK
         $this->addForeignKey(
-            'FK_c_type_task_pd_id',
-            'type_task_pd',
+            'FK_type_form_id321',
+            'form',
+            'type_form_id',
+            'type_form',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_plan_id321',
+            'form',
+            'plan_id',
+            'plan',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_c_form_id',
+            'form',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_type_task_pd_id',
-            'type_task_pd',
+            'FK_u_form_id',
+            'form',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_type_task_pd_id',
-            'type_task_pd',
+            'FK_d_form_id',
+            'form',
             'delete_by',
             'user',
             'id'
@@ -45,6 +63,10 @@ class m240521_203500_create_type_task_pd_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('type_task_pd');
+        $this->dropTable('form');
+
+        //FK
+        $this->dropForeignKey('FK_type_form_id321', 'type_form');
+        $this->dropForeignKey('FK_plan_id321', 'plan');
     }
 }

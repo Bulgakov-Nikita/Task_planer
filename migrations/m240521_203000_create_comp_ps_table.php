@@ -25,7 +25,7 @@ class m240521_203000_create_comp_ps_table extends Migration
         ]);
         $this->addCommentOnTable('comp_ps', 'Таблица для хранения информации о компетенции 3');
 
-        //FK:
+        //ВК
         $this->addForeignKey(
             'FK_parent_id123',
             'comp_ps',
@@ -40,27 +40,27 @@ class m240521_203000_create_comp_ps_table extends Migration
             'prof_standart',
             'id'
         );
-//        $this->addForeignKey(
-//            'FK_c_comp_ps_id',
-//            'comp_ps',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_comp_ps_id',
-//            'comp_ps',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_comp_ps_id',
-//            'comp_ps',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_c_comp_ps_id',
+            'comp_ps',
+            'create_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_u_comp_ps_id',
+            'comp_ps',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_comp_ps_id',
+            'comp_ps',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown()

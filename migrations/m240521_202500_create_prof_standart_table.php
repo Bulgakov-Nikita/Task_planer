@@ -21,30 +21,27 @@ class m240521_202500_create_prof_standart_table extends Migration
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('prof_standart', 'Таблица для хранения информации о кафедре');
-
-
-        //FK:
-//        $this->addForeignKey(
-//            'FK_c_prof_standart_id',
-//            'prof_standart',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_prof_standart_id',
-//            'prof_standart',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_prof_standart_id',
-//            'prof_standart',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_c_prof_standart_id',
+            'prof_standart',
+            'create_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_u_prof_standart_id',
+            'prof_standart',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_prof_standart_id',
+            'prof_standart',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown()

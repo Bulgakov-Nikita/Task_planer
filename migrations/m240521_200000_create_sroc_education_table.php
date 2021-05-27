@@ -18,29 +18,27 @@ class m240521_200000_create_sroc_education_table extends Migration{
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('sroc_education', 'Таблица которая хранит срок обуения');
-
-        //FK:
-//        $this->addForeignKey(
-//            'FK_c_sroc_education_id',
-//            'sroc_education',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_sroc_education_id',
-//            'sroc_education',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_sroc_education_id',
-//            'sroc_education',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_c_sroc_education_id',
+            'sroc_education',
+            'create_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_u_sroc_education_id',
+            'sroc_education',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_sroc_education_id',
+            'sroc_education',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown(){

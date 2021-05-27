@@ -24,33 +24,33 @@ class m240521_205500_create_sprav_kafedra_table extends Migration
 
         //FK
         $this->addForeignKey(
-            'FK_facultet_id',
+            'FK_sprav_facultet_id',
             'sprav_kafedra',
             'sprav_facultet_id',
             'sprav_facultet',
             'id'
         );
-//        $this->addForeignKey(
-//            'FK_c_kafedra_id',
-//            'kafedra',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_kafedra_id',
-//            'kafedra',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_kafedra_id',
-//            'kafedra',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_c_sprav_kafedra_id',
+            'sprav_kafedra',
+            'create_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_u_sprav_kafedra_id',
+            'sprav_kafedra',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_sprav_kafedra_id',
+            'sprav_kafedra',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown()
@@ -58,6 +58,6 @@ class m240521_205500_create_sprav_kafedra_table extends Migration
         $this->dropTable('kafedra');
 
         //FK
-        $this->dropForeigenKey('FK_facultet_id','sprav_facultet');
+        $this->dropForeigenKey('FK_facultet_id');
     }
 }

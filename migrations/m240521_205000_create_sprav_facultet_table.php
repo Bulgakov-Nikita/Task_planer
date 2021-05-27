@@ -24,38 +24,38 @@ class m240521_205000_create_sprav_facultet_table extends Migration
 
         //FK
         $this->addForeignKey(
-            'FK_inctitut_id1111',
+            'FK_sprav_facultet_id1111',
             'sprav_facultet',
             'institut_id',
             'institut',
             'id'
         );
-//        $this->addForeignKey(
-//            'FK_c_facultet_id',
-//            'facultet',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_facultet_id',
-//            'facultet',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_facultet_id',
-//            'facultet',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_c_sprav_facultet_id',
+            'sprav_facultet',
+            'create_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_u_sprav__facultet_id',
+            'sprav_facultet',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_sprav__facultet_id',
+            'sprav_facultet',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown()
     {
-        $this->dropTable('sprav_facultet');
+        $this->dropTable('facultet');
 
         //FK
         $this->dropForeigenKey('FK_inctitut_id', 'institut');

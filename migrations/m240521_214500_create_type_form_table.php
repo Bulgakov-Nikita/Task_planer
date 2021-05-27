@@ -2,13 +2,13 @@
 
 use \yii\db\Migration;
 
-class m240521_203500_create_type_task_pd_table extends Migration
+class m240521_214500_create_type_form_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('type_task_pd', [
+        $this->createTable('type_form', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->comment('Тип задачи проф деятельности'),
+            'name' => $this->string(45)->notNull()->comment('тип формы'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -19,24 +19,24 @@ class m240521_203500_create_type_task_pd_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('type_task_pd', 'Таблица для хранения информации о Типе задач проф деятельности');
+        $this->addCommentOnTable('type_form', 'Таблица для хранения информации о типе формы');
         $this->addForeignKey(
-            'FK_c_type_task_pd_id',
-            'type_task_pd',
+            'FK_c_type_form_id',
+            'type_form',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_type_task_pd_id',
-            'type_task_pd',
+            'FK_u_type_form_id',
+            'type_form',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_type_task_pd_id',
-            'type_task_pd',
+            'FK_d_type_form_id',
+            'type_form',
             'delete_by',
             'user',
             'id'
@@ -45,6 +45,6 @@ class m240521_203500_create_type_task_pd_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('type_task_pd');
+        $this->dropTable('type_form');
     }
 }

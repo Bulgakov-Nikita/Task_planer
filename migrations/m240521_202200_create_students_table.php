@@ -10,8 +10,8 @@ class m240521_202200_create_students_table extends Migration{
             'i'=>$this->string(100)->notNull()->comment('и'),
             'o'=>$this->string(100)->notNull()->comment('о'),
             '№'=>$this->string(100)->notNull()->comment('номер паспорта'),
-            'seria'=>$this->string(45)->notNull()->coment('серия паспорта'),
-            'groups_id'=>$this->integer()->notNull()->comment('номер группы'),
+            'seria' => $this->string(45)->notNull()->comment('серия паспорта'),
+            'groups_id'=> $this->integer()->notNull()->comment('номер группы'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -22,43 +22,33 @@ class m240521_202200_create_students_table extends Migration{
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('students', 'Таблица которая хранит информацию о студентах');
 
-        //FK:
+        $this->addCommentOnTable('students', 'Таблица которая хранит информацию о студентах');
         $this->addForeignKey(
-            'FK_groupsId_students',
-            'students',
-            'groups_id',
+            'FK_c_students_id',
             'groups',
+            'create_by',
+            'user',
             'id'
         );
-
-//        $this->addForeignKey(
-//            'FK_c_students_id',
-//            'groups',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_students_id',
-//            'groups',
-//            'update_by',
-//            'user',
-//            'id',
-//        );
-//        $this->addForeignKey(
-//            'FK_d_students_id',
-//            'groups',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_u_students_id',
+            'groups',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_students_id',
+            'groups',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown(){
         $this->dropTable('students');
-        $this->dropForeignKey('FK_groupsId_students','groups');
     }
 }
 

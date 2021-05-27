@@ -20,29 +20,27 @@ class m240521_201000_create_fgos_table extends Migration{
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('fgos', 'Таблица которая ФГОС"ы');
-
-        //FK:
-//        $this->addForeignKey(
-//            'FK_c_fgos_id',
-//            'fgos',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_fgos_id',
-//            'fgos',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_fgos_id',
-//            'fgos',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_c_fgos_id',
+            'fgos',
+            'create_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_u_fgos_id',
+            'fgos',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_fgos_id',
+            'fgos',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown(){

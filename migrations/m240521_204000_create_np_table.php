@@ -25,7 +25,6 @@ class m240521_204000_create_np_table extends Migration
         $this->addCommentOnTable('np', 'Таблица для хранения информации о направления подготовки');
 
         //FK
-
         $this->addForeignKey(
             'FK_prof_standart_id33333',
             'np',
@@ -40,27 +39,27 @@ class m240521_204000_create_np_table extends Migration
             'type_task_pd',
             'id'
         );
-//        $this->addForeignKey(
-//            'FK_c_np_id',
-//            'np',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_np_id',
-//            'np',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_np_id',
-//            'np',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_c_np_id',
+            'np',
+            'create_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_u_np_id',
+            'np',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_np_id',
+            'np',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown()

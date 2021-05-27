@@ -8,12 +8,13 @@ class m240521_200500_create_staff_table extends Migration
     {
         $this->createTable('staff', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'f' => $this->string(100)->notNull()->comment('Фамилия имя отчество Ф'),
-            'i' => $this->string(100)->notNull()->comment('Фамилия имя отчество И'),
-            'o' => $this->sring(100)->notNull()->comment('Фамилия имя отчество О'),
-            'post' => $this->text()->notNull()->comment('должность'),
+            'F' => $this->string(100)->notNull()->comment('Фамилия имя отчество Ф'),
+            'I' => $this->string(100)->notNull()->comment('Фамилия имя отчество И'),
+            'O' => $this->string(100)->notNull()->comment('Фамилия имя отчество О'),
+            'OO' => $this->text()->notNull()->comment('о?'),
             'user_id' => $this->integer()->comment('юзер id'),
 
+            'post' => $this->text()->notNull()->comment('должность'),
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
@@ -24,43 +25,31 @@ class m240521_200500_create_staff_table extends Migration
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('staff', 'Таблица для хранения информации о сотрудниках');
-
-        //FK :
         $this->addForeignKey(
-            'FK_userId_staffId',
+            'FK_c_staff_id',
             'staff',
-            'user_id',
+            'create_by',
             'user',
             'id'
         );
-//        $this->addForeignKey(
-//            'FK_c_staff_id',
-//            'staff',
-//            'create_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_u_staff_id',
-//            'staff',
-//            'update_by',
-//            'user',
-//            'id'
-//        );
-//        $this->addForeignKey(
-//            'FK_d_staff_id',
-//            'staff',
-//            'delete_by',
-//            'user',
-//            'id'
-//        );
+        $this->addForeignKey(
+            'FK_u_staff_id',
+            'staff',
+            'update_by',
+            'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_d_staff_id',
+            'staff',
+            'delete_by',
+            'user',
+            'id'
+        );
     }
 
     public function safeDown()
     {
         $this->dropTable('staff');
-
-        //drop fk
-        $this->dropForeignKey('FK_userId_staffId', 'user');
     }
 }

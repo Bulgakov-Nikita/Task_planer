@@ -2,15 +2,15 @@
 
 use \yii\db\Migration;
 
-class m240521_211000_create_comp_ps_has_comp_table extends Migration
+class m240521_221000_create_podpisants_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('comp_ps_has_comp', [
-            'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'comp_id' => $this->integer()->notNull()->comment('ссылка на компетенции'),
-            'comp_ps_id' => $this->integer()->notNull()->comment('ссылка на компетенции 3'),
-
+        $this->createTable('podpisants', [
+            'id' => $this->primaryKey()->notNull()->comment('PK'),
+            'staff_id' => $this->integer()->notNull()->comment('ссылка на сотрудников'),
+            'main_plan_id' => $this->integer()->notNull()->comment('ссылка на главную таблицу'),
+            
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
@@ -20,40 +20,40 @@ class m240521_211000_create_comp_ps_has_comp_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('comp_ps_has_comp', 'Таблица для хранения информации о компетенции и компетенции 3');
+        $this->addCommentOnTable('podpisants', 'Таблица для хранения информации о подписантов');
 
         //FK
         $this->addForeignKey(
-            'FK_comp_id_cc3_id',
-            'comp_ps_has_comp',
-            'comp_id',
-            'comp',
+            'FK_staff_id444',
+            'podpisants',
+            'staff_id',
+            'staff',
             'id'
         );
         $this->addForeignKey(
-            'FK_comp3_id_cc3_id',
-            'comp_ps_has_comp',
-            'comp_ps_id',
-            'comp_ps',
+            'FK_main_plan_id444',
+            'podpisants',
+            'main_plan_id',
+            'main_plan',
             'id'
         );
         $this->addForeignKey(
-            'FK_c_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
+            'FK_c_podpisants_id',
+            'podpisants',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
+            'FK_u_podpisants_id',
+            'podpisants',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
+            'FK_d_podpisants_id',
+            'podpisants',
             'delete_by',
             'user',
             'id'
@@ -62,10 +62,10 @@ class m240521_211000_create_comp_ps_has_comp_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('comp_ps_has_comp');
+        $this->dropTable('podpisants');
 
         //FK
-        $this->dropForeigenKey('FK_comp_id_cc3_id', 'comp_id');
-        $this->dropForeigenKey('FK_comp3_id_cc3_id', 'comp_ps');
+        $this->dropForeigenKey('FK_staff_id444', 'staff');
+        $this->dropForeigenKey('FK_main_plan_id444', 'main_plan');
     }
 }

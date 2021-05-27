@@ -2,13 +2,15 @@
 
 use \yii\db\Migration;
 
-class m240521_203500_create_type_task_pd_table extends Migration
+class m240521_210500_create_comp_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('type_task_pd', [
+        $this->createTable('comp', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->comment('Тип задачи проф деятельности'),
+            'index' => $this->string(45)->notNull()->comment('индекс'),
+            'soderzhanie' => $this->text()->notNull()->comment('содержание'),
+            'main_plan_id' => $this->integer()->notNull()->comment('id для учебного плана'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -19,32 +21,40 @@ class m240521_203500_create_type_task_pd_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('type_task_pd', 'Таблица для хранения информации о Типе задач проф деятельности');
+        $this->addCommentOnTable('comp', 'Таблица для хранения информации о компетенции');
         $this->addForeignKey(
-            'FK_c_type_task_pd_id',
-            'type_task_pd',
+            'FK_c_comp_id',
+            'comp',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_type_task_pd_id',
-            'type_task_pd',
+            'FK_u_comp_id',
+            'comp',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_type_task_pd_id',
-            'type_task_pd',
+            'FK_d_comp_id',
+            'comp',
             'delete_by',
             'user',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_main_plan_id_comp_id',
+            'comp',
+            'main_plan_id',
+            'main_plan',
             'id'
         );
     }
 
     public function safeDown()
     {
-        $this->dropTable('type_task_pd');
+        $this->dropTable('comp');
+        // сделать удаление внешних ключей
     }
 }
