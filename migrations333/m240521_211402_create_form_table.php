@@ -10,7 +10,7 @@ class m240521_211402_create_form_table extends Migration
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'data' => $this->string(45)->notNull()->comment('данные'),
             'type_form_id' => $this->integer()->notNull()->comment('ссылка на тип формы'),
-            'disciplin_id' => $this->integer()->notNull()->comment('ссылка на'),
+            'disciplins_id' => $this->integer()->notNull()->comment('ссылка на'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -27,8 +27,8 @@ class m240521_211402_create_form_table extends Migration
         $this->addForeignKey(
             'FK_type_form_id321',
             'form',
-            'disciplin_id',
-            'disciplin',
+            'disciplins_id',
+            'disciplins',
             'id'
         );
         $this->addForeignKey(
@@ -66,7 +66,7 @@ class m240521_211402_create_form_table extends Migration
         $this->dropTable('form');
 
         //FK
-        $this->dropForeignKey('FK_type_form_id321', 'disciplin');
+        $this->dropForeignKey('FK_type_form_id321', 'disciplins');
         $this->dropForeignKey('FK_plan_id321', 'type_form');
     }
 }

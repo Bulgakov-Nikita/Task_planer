@@ -10,7 +10,7 @@ class m240521_210402_create_prep_rekv_table extends Migration
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'prepod_id' => $this->integer()->notNull()->comment('препод ид'),
             'education' => $this->text()->comment('Уровень образования'),
-            'kval_prepod' => $this->texe()->comment('квалификация преподавателя'),
+            'kval_prepod' => $this->text()->comment('квалификация преподавателя'),
             'svedenia' => $this->text()->comment('Сведения о повышении квалификации и (или) профессиональной переподготовке'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),

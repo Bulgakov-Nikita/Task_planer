@@ -9,8 +9,8 @@ class m240521_211200_create_history_staj_table extends Migration
         $this->createTable('history_staj', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'staj_id' => $this->integer()->notNull()->comment(''),
-            'data_begin' => $this->DATA()->notNull()->comment(''),
-            'data_end' => $this->DATA()->comment(''),
+            'data_begin' => $this->date()->notNull()->comment(''),
+            'data_end' => $this->date()->comment(''),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),

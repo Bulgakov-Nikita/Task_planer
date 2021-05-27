@@ -8,11 +8,11 @@ class m240521_210600_create_staj_table extends Migration
     {
         $this->createTable('staj', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'prepod_id' => $this->integer()->notNull()->comment(''),
-            'type_staj_id'=> $this->integer()->notNull()->comment(''),
-            'years'=>$this->integer()->coment(''),
-            'mounth' => $this->integer()->coment(''),
-            'days' => $this->integer()->coment(''),
+            'prepod_id' => $this->integer()->notNull()->comment('препод ид'),
+            'type_staj_id'=> $this->integer()->notNull()->comment('тип стажа'),
+            'years'=>$this->integer()->comment('год'),
+            'mounth' => $this->integer()->comment('месяц'),
+            'days' => $this->integer()->comment('день'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),

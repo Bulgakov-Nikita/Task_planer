@@ -10,7 +10,7 @@ class m240521_200500_create_staff_table extends Migration
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'f' => $this->string(100)->notNull()->comment('Фамилия имя отчество Ф'),
             'i' => $this->string(100)->notNull()->comment('Фамилия имя отчество И'),
-            'o' => $this->sring(100)->notNull()->comment('Фамилия имя отчество О'),
+            'o' => $this->string(100)->notNull()->comment('Фамилия имя отчество О'),
             'post' => $this->text()->notNull()->comment('должность'),
             'user_id' => $this->integer()->comment('юзер id'),
 
