@@ -9,7 +9,7 @@ class m240521_211500_create_kaf_has_comp_table extends Migration
         $this->createTable('kk', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'comp_id' => $this->integer()->notNull()->comment('ссылка на компетенцию'),
-            'kafedra_id' => $this->integer()->notNull()->comment('ссылка на кафедру'),
+            'sprav_kafedra_id' => $this->integer()->notNull()->comment('ссылка на кафедру'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -32,31 +32,31 @@ class m240521_211500_create_kaf_has_comp_table extends Migration
         $this->addForeignKey(
             'FK_kafedra_id111333',
             'kk',
-            'kafedra_id',
-            'kafedra',
+            'sprav_kafedra_id',
+            'sprav_kafedra',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_kk_id',
-            'kk',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_kk_id',
-            'kk',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_kk_id',
-            'kk',
-            'delete_by',
-            'user',
-            'id'
-        );
+//        $this->addForeignKey(
+//            'FK_c_kk_id',
+//            'kk',
+//            'create_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_u_kk_id',
+//            'kk',
+//            'update_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_d_kk_id',
+//            'kk',
+//            'delete_by',
+//            'user',
+//            'id'
+//        );
     }
 
     public function safeDown()
@@ -65,6 +65,6 @@ class m240521_211500_create_kaf_has_comp_table extends Migration
         
         //FK
         $this->dropForeignKey('FK_comp_id111333', 'comp');
-        $this->dropForeignKey('FK_kafedra_id111333', 'kafedra');
+        $this->dropForeignKey('FK_kafedra_id111333', 'sprav_kafedra');
     }
 }

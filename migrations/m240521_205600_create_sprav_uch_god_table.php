@@ -2,11 +2,13 @@
 
 use \yii\db\Migration;
 
-class m240521_201500_create_kvalification_table extends Migration{
+class m240521_205600_create_sprav_uch_god_table extends Migration{
     public function safeUp(){
-        $this->createTable('kvalification',[
+        $this->createTable('sprav_uch_god',[
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(20)->notNull()->comment('название квалификация (бакалавр, магистратура, апирантура)'),
+            'name' => $this->string(100)->notNull()->comment('Название?'),
+            'year_begin' => $this->integer(11)->comment('Год начала учебного года'),
+            'year_end' => $this->integer(11)->comment('Год конца учебного года'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -17,26 +19,26 @@ class m240521_201500_create_kvalification_table extends Migration{
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('kvalification', 'Таблица которая хранит квалификацию');
+        $this->addCommentOnTable('sprav_uch_god', 'Хранит учебный год');
 
-        //FK:
+        //FOREIGN KEYS:
 //        $this->addForeignKey(
-//            'FK_c_kvalification_id',
-//            'kvalification',
+//            'FK_c_main_plan_id333',
+//            'sprav_uch_god',
 //            'create_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_u_kvalification_id',
-//            'kvalification',
+//            'FK_u_main_plan_id333',
+//            'sprav_uch_god',
 //            'update_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_d_kvalification_id',
-//            'kvalification',
+//            'FK_d_main_plan_id333',
+//            'sprav_uch_god',
 //            'delete_by',
 //            'user',
 //            'id'
@@ -44,6 +46,8 @@ class m240521_201500_create_kvalification_table extends Migration{
     }
 
     public function safeDown(){
-        $this->dropTable('kvalification');
+        $this->dropTable('sprav_uch_god');
+
+        //DELETE FOREIGN KEYS
     }
 }

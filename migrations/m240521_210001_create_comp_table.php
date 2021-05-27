@@ -2,12 +2,16 @@
 
 use \yii\db\Migration;
 
-class m240521_201500_create_kvalification_table extends Migration{
-    public function safeUp(){
-        $this->createTable('kvalification',[
+class m240521_210001_create_comp_table extends Migration
+{
+    public function safeUp()
+    {
+        $this->createTable('comp', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(20)->notNull()->comment('название квалификация (бакалавр, магистратура, апирантура)'),
-
+            'index' => $this->string(45)->notNull()->comment('индекс'),
+            'soderzhanie' => $this->text()->notNull()->comment('содержание'),
+            'main_plan_id' => $this->integer()->notNull()->comment('id для учебного плана'),
+            
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
@@ -17,33 +21,43 @@ class m240521_201500_create_kvalification_table extends Migration{
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('kvalification', 'Таблица которая хранит квалификацию');
+        $this->addCommentOnTable('comp', 'Таблица для хранения информации о компетенции');
 
         //FK:
 //        $this->addForeignKey(
-//            'FK_c_kvalification_id',
-//            'kvalification',
+//            'FK_c_comp_id',
+//            'comp',
 //            'create_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_u_kvalification_id',
-//            'kvalification',
+//            'FK_u_comp_id',
+//            'comp',
 //            'update_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_d_kvalification_id',
-//            'kvalification',
+//            'FK_d_comp_id',
+//            'comp',
 //            'delete_by',
 //            'user',
 //            'id'
 //        );
+        $this->addForeignKey(
+            'FK_main_plan_id_comp_id',
+            'comp',
+            'main_plan_id',
+            'main_plan',
+            'id'
+        );
     }
 
-    public function safeDown(){
-        $this->dropTable('kvalification');
+    public function safeDown()
+    {
+        $this->dropTable('comp');
+        // сделать удаление внешних ключей
+        $this->dropForeignKey('FK_main_plan_id_comp_id','main_plan');
     }
 }

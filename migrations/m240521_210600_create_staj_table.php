@@ -2,15 +2,17 @@
 
 use \yii\db\Migration;
 
-class m240521_213500_create_plan_table extends Migration
+class m240521_210600_create_staj_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('plan', [
+        $this->createTable('staj', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'main_plan_id' => $this->integer()->notNull()->comment('ссылка на компетенцию 2'),
-            'kurs_id' => $this->integer()->notNull()->comment('ссылка на курсы'),
-            'kafedra_id' => $this->integer()->notNull()->comment('ссылка на кафедру'),
+            'prepod_id' => $this->integer()->notNull()->comment(''),
+            'type_staj_id'=> $this->integer()->notNull()->comment(''),
+            'years'=>$this->integer()->coment(''),
+            'mounth' => $this->integer()->coment(''),
+            'days' => $this->integer()->coment(''),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -21,61 +23,53 @@ class m240521_213500_create_plan_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('plan', 'Таблица для хранения информации о Плане');
+        $this->addCommentOnTable('period', 'Таблица для хранения информации о периоде');
 
         //FK
         $this->addForeignKey(
-            'FK_comp2_id333',
-            'plan',
-            'main_plan_id',
-            'main_plan',
+            'FK_c_staj_id44542',
+            'staj',
+            'period_id',
+            'prepod',
             'id'
         );
+
         $this->addForeignKey(
-            'FK_spravochnic2_id333',
-            'plan',
-            'kurs_id',
-            'kurs',
+            'FK_c_staj_id44546',
+            'staj',
+            'type_staj_id',
+            'type_staj',
             'id'
         );
+
         $this->addForeignKey(
-            'FK_kafedra_id333',
-            'plan',
-            'kafedra_id',
-            'kafedra',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_c_plan_id',
-            'plan',
+            'FK_c_period_id',
+            'prep_rekv',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_plan_id',
-            'plan',
+            'FK_u_period_id',
+            'period',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_plan_id',
-            'plan',
+            'FK_d_period_id',
+            'period',
             'delete_by',
             'user',
             'id'
         );
-
     }
 
     public function safeDown()
     {
-        $this->dropTable('plan');
+        $this->dropTable('period');
 
         //FK
-        $this->dropForeignKey('FK_comp2_id333', 'main_plan');
-        $this->dropForeignKey('FK_spravochnic2_id333', 'kurs');
-        $this->dropForeignKey('FK_kafedra_id333', 'kafedra');
+        $this->dropForeigenKey('FK_type_periods_id444111', 'type_periods');
     }
 }

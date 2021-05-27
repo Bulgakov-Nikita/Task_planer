@@ -20,27 +20,29 @@ class m240521_203500_create_type_task_pd_table extends Migration
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('type_task_pd', 'Таблица для хранения информации о Типе задач проф деятельности');
-        $this->addForeignKey(
-            'FK_c_type_task_pd_id',
-            'type_task_pd',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_type_task_pd_id',
-            'type_task_pd',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_type_task_pd_id',
-            'type_task_pd',
-            'delete_by',
-            'user',
-            'id'
-        );
+
+        //FK:
+//        $this->addForeignKey(
+//            'FK_c_type_task_pd_id',
+//            'type_task_pd',
+//            'create_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_u_type_task_pd_id',
+//            'type_task_pd',
+//            'update_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_d_type_task_pd_id',
+//            'type_task_pd',
+//            'delete_by',
+//            'user',
+//            'id'
+//        );
     }
 
     public function safeDown()

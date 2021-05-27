@@ -2,15 +2,15 @@
 
 use \yii\db\Migration;
 
-class m240521_215000_create_form_table extends Migration
+class m240521_211200_create_history_staj_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('form', [
+        $this->createTable('history_staj', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'data' => $this->string(45)->notNull()->comment('данные'),
-            'type_form_id' => $this->integer()->notNull()->comment('ссылка на тип формы'),
-            'plan_id' => $this->integer()->notNull()->comment('ссылка на план'),
+            'staj_id' => $this->integer()->notNull()->comment(''),
+            'data_begin' => $this->DATA()->notNull()->comment(''),
+            'data_end' => $this->DATA()->comment(''),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -21,40 +21,34 @@ class m240521_215000_create_form_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('form', 'Таблица для хранения информации о форме');
+        $this->addCommentOnTable('period', 'Таблица для хранения информации о периоде');
 
         //FK
         $this->addForeignKey(
-            'FK_type_form_id321',
-            'form',
-            'type_form_id',
-            'type_form',
+            'FK_c_history_staj',
+            'history_staj',
+            'staj_id',
+            'staj',
             'id'
         );
+
         $this->addForeignKey(
-            'FK_plan_id321',
-            'form',
-            'plan_id',
-            'plan',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_c_form_id',
-            'form',
+            'FK_c_period_id',
+            'prep_rekv',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_form_id',
-            'form',
+            'FK_u_period_id',
+            'period',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_form_id',
-            'form',
+            'FK_d_period_id',
+            'period',
             'delete_by',
             'user',
             'id'
@@ -63,10 +57,10 @@ class m240521_215000_create_form_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('form');
+        $this->dropTable('period');
 
         //FK
-        $this->dropForeignKey('FK_type_form_id321', 'type_form');
-        $this->dropForeignKey('FK_plan_id321', 'plan');
+        $this->dropForeigenKey('FK_type_periods_id444111', 'type_periods');
     }
 }
+

@@ -19,27 +19,29 @@ class m240521_202100_create_groups_table extends Migration{
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('groups', 'Таблица которая хранит группу');
-        $this->addForeignKey(
-            'FK_c_groups_id',
-            'groups',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_groups_id',
-            'groups',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_groups_id',
-            'groups',
-            'delete_by',
-            'user',
-            'id'
-        );
+
+        //FK:
+//        $this->addForeignKey(
+//            'FK_c_groups_id',
+//            'groups',
+//            'create_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_u_groups_id',
+//            'groups',
+//            'update_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_d_groups_id',
+//            'groups',
+//            'delete_by',
+//            'user',
+//            'id'
+//        );
     }
 
     public function safeDown(){

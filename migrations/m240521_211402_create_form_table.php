@@ -2,14 +2,15 @@
 
 use \yii\db\Migration;
 
-class m240521_215500_create_sprav_dis_table extends Migration
+class m240521_211402_create_form_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('sprav_dis', [
+        $this->createTable('form', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->comment('тип дисциплины'),
-            'kafedra_id' => $this->integer()->comment('Ссылка на кафедру'),
+            'data' => $this->string(45)->notNull()->comment('данные'),
+            'type_form_id' => $this->integer()->notNull()->comment('ссылка на тип формы'),
+            'disciplin_id' => $this->integer()->notNull()->comment('ссылка на'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -20,33 +21,40 @@ class m240521_215500_create_sprav_dis_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('sprav_dis', 'Таблица для хранения информации о типе дисциплины');
-        
+        $this->addCommentOnTable('form', 'Таблица для хранения информации о форме');
+
         //FK
         $this->addForeignKey(
-            'FK_kafedra_id_sprav_dis_id',
-            'sprav_dis',
-            'kafedra_id',
-            'kafedra',
+            'FK_type_form_id321',
+            'form',
+            'disciplin_id',
+            'disciplin',
             'id'
         );
         $this->addForeignKey(
-            'FK_c_sprav_dis_id',
-            'sprav_dis',
+            'FK_plan_id321',
+            'form',
+            'plan_id',
+            'plan',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_c_form_id',
+            'form',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_sprav_dis_id',
-            'sprav_dis',
+            'FK_u_form_id',
+            'form',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_sprav_dis_id',
-            'sprav_dis',
+            'FK_d_form_id',
+            'form',
             'delete_by',
             'user',
             'id'
@@ -55,9 +63,10 @@ class m240521_215500_create_sprav_dis_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('sprav_dis');
+        $this->dropTable('form');
 
         //FK
-        $this->dropForeigenKey('FK_kafedra_id_sprav_dis_id', 'kafedra');
+        $this->dropForeignKey('FK_type_form_id321', 'type_form');
+        $this->dropForeignKey('FK_plan_id321', 'plan');
     }
 }

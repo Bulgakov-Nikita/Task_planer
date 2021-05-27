@@ -2,7 +2,7 @@
 
 use \yii\db\Migration;
 
-class m240521_220000_create_disciplins_table extends Migration
+class m240521_211400_create_disciplins_table extends Migration
 {
     public function safeUp()
     {

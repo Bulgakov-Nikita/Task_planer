@@ -37,27 +37,27 @@ class m240521_211000_create_comp_ps_has_comp_table extends Migration
             'comp_ps',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_comp_ps_has_comp_id',
-            'comp_ps_has_comp',
-            'delete_by',
-            'user',
-            'id'
-        );
+//        $this->addForeignKey(
+//            'FK_c_comp_ps_has_comp_id',
+//            'comp_ps_has_comp',
+//            'create_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_u_comp_ps_has_comp_id',
+//            'comp_ps_has_comp',
+//            'update_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_d_comp_ps_has_comp_id',
+//            'comp_ps_has_comp',
+//            'delete_by',
+//            'user',
+//            'id'
+//        );
     }
 
     public function safeDown()

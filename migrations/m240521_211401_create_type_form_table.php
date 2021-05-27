@@ -2,15 +2,13 @@
 
 use \yii\db\Migration;
 
-class m240521_210500_create_comp_table extends Migration
+class m240521_211401_create_type_form_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('comp', [
+        $this->createTable('type_form', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'index' => $this->string(45)->notNull()->comment('индекс'),
-            'soderzhanie' => $this->text()->notNull()->comment('содержание'),
-            'main_plan_id' => $this->integer()->notNull()->comment('id для учебного плана'),
+            'name' => $this->string(45)->notNull()->comment('тип формы'),
             
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -21,40 +19,32 @@ class m240521_210500_create_comp_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('comp', 'Таблица для хранения информации о компетенции');
+        $this->addCommentOnTable('type_form', 'Таблица для хранения информации о типе формы');
         $this->addForeignKey(
-            'FK_c_comp_id',
-            'comp',
+            'FK_c_type_form_id',
+            'type_form',
             'create_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_u_comp_id',
-            'comp',
+            'FK_u_type_form_id',
+            'type_form',
             'update_by',
             'user',
             'id'
         );
         $this->addForeignKey(
-            'FK_d_comp_id',
-            'comp',
+            'FK_d_type_form_id',
+            'type_form',
             'delete_by',
             'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_main_plan_id_comp_id',
-            'comp',
-            'main_plan_id',
-            'main_plan',
             'id'
         );
     }
 
     public function safeDown()
     {
-        $this->dropTable('comp');
-        // сделать удаление внешних ключей
+        $this->dropTable('type_form');
     }
 }

@@ -2,16 +2,16 @@
 
 use \yii\db\Migration;
 
-class m240521_204000_create_np_table extends Migration
+class m240521_210402_create_prep_rekv_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('np', [
+        $this->createTable('prep_rekv', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'code' => $this->string(45)->notNull()->comment('Код'),
-            'name' => $this->string(45)->notNull()->comment('Название направления подготовки'),
-            'type_task_pd_id' => $this->integer()->notNull()->comment('ссылка на Тип задачи проф деятельности'),
-            'comp_ps_id' => $this->integer()->comment('ссылка на проф стандарт'),
+            'prepod_id' => $this->integer()->notNull()->comment('препод ид'),
+            'education' => $this->text()->comment('Уровень образования'),
+            'kval_prepod' => $this->texe()->comment('квалификация преподавателя'),
+            'svedenia' => $this->text()->comment('Сведения о повышении квалификации и (или) профессиональной переподготовке'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -22,41 +22,33 @@ class m240521_204000_create_np_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('np', 'Таблица для хранения информации о направления подготовки');
+        $this->addCommentOnTable('prep_rekv', 'Таблица для хранения проффесиональной информации о преподавателе');
 
         //FK
+        $this->addForeignKey('FK_prepodId_prepRekv',
+            'prep_rekv',
+            'prepod_id',
+            'prepod',
+            'id'
+        );
 
-        $this->addForeignKey(
-            'FK_prof_standart_id33333',
-            'np',
-            'comp_ps_id',
-            'comp_ps',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_type_task_pd_id33333',
-            'np',
-            'type_task_pd_id',
-            'type_task_pd',
-            'id'
-        );
 //        $this->addForeignKey(
-//            'FK_c_np_id',
-//            'np',
+//            'FK_c_period_id',
+//            'period',
 //            'create_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_u_np_id',
-//            'np',
+//            'FK_u_period_id',
+//            'period',
 //            'update_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_d_np_id',
-//            'np',
+//            'FK_d_period_id',
+//            'period',
 //            'delete_by',
 //            'user',
 //            'id'
@@ -65,10 +57,11 @@ class m240521_204000_create_np_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('np');
+        $this->dropTable('prep_rekv');
 
         //FK
-        $this->dropForeigenKey('FK_prof_standart_id33333', 'comp_ps');
-        $this->dropForeigenKey('FK_type_task_pd_id33333', 'type_task_pd');
+        $this->dropForeigenKey('FK_prepodId_prepRekv', 'prepod');
     }
 }
+
+

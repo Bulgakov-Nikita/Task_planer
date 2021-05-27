@@ -21,27 +21,29 @@ class m240521_204500_create_institut_table extends Migration
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
         $this->addCommentOnTable('institut', 'Таблица хранит в себе название институтов');
-        $this->addForeignKey(
-            'FK_c_institut_id',
-            'institut',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_institut_id',
-            'institut',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_institut_id',
-            'institut',
-            'delete_by',
-            'user',
-            'id'
-        );
+
+        //FK:
+//        $this->addForeignKey(
+//            'FK_c_institut_id',
+//            'institut',
+//            'create_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_u_institut_id',
+//            'institut',
+//            'update_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_d_institut_id',
+//            'institut',
+//            'delete_by',
+//            'user',
+//            'id'
+//        );
     }
 
 

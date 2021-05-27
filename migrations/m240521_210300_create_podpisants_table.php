@@ -2,7 +2,7 @@
 
 use \yii\db\Migration;
 
-class m240521_221000_create_podpisants_table extends Migration
+class m240521_210300_create_podpisants_table extends Migration
 {
     public function safeUp()
     {
@@ -24,7 +24,7 @@ class m240521_221000_create_podpisants_table extends Migration
 
         //FK
         $this->addForeignKey(
-            'FK_staff_id444',
+            'FK_staff_id_id4534',
             'podpisants',
             'staff_id',
             'staff',
@@ -37,27 +37,27 @@ class m240521_221000_create_podpisants_table extends Migration
             'main_plan',
             'id'
         );
-        $this->addForeignKey(
-            'FK_c_podpisants_id',
-            'podpisants',
-            'create_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_u_podpisants_id',
-            'podpisants',
-            'update_by',
-            'user',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_d_podpisants_id',
-            'podpisants',
-            'delete_by',
-            'user',
-            'id'
-        );
+//        $this->addForeignKey(
+//            'FK_c_podpisants_id',
+//            'podpisants',
+//            'create_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_u_podpisants_id',
+//            'podpisants',
+//            'update_by',
+//            'user',
+//            'id'
+//        );
+//        $this->addForeignKey(
+//            'FK_d_podpisants_id',
+//            'podpisants',
+//            'delete_by',
+//            'user',
+//            'id'
+//        );
     }
 
     public function safeDown()

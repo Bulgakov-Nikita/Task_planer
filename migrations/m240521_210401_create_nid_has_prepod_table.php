@@ -2,17 +2,14 @@
 
 use \yii\db\Migration;
 
-class m240521_203000_create_comp_ps_table extends Migration
+class m240521_210401_create_nid_has_prepod_table extends Migration
 {
     public function safeUp()
     {
-        $this->createTable('comp_ps', [
+        $this->createTable('nid_has_prepod', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'index' => $this->string(45)->notNull()->comment('индекс'),
-            'name' => $this->text()->notNull()->comment('название компетенции 3'),
-            'trebovanie' => $this->text()->comment('требования'),
-            'parent_id' => $this->integer()->comment('ссылка самого на себя'),
-            'prof_standart_id' => $this->integer()->notNull()->comment('номер и дата проф стандарта'),
+            'nid_id' => $this->integer()->notNull()->comment(''),
+            'prepod_id' => $this->integer()->notNull()->comment(''),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -23,40 +20,44 @@ class m240521_203000_create_comp_ps_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('comp_ps', 'Таблица для хранения информации о компетенции 3');
+        $this->addCommentOnTable(
+            'nid_has_prepod',
+            'Таблица для соответствия научной иследовательской деятельности к преподавателям ');
 
-        //FK:
+        //FK
         $this->addForeignKey(
-            'FK_parent_id123',
-            'comp_ps',
-            'parent_id',
-            'comp_ps',
+            'FK_nidId_nidHasPrepod',
+            'nid_has_prepod',
+            'nid_id',
+            'nid',
             'id'
         );
         $this->addForeignKey(
-            'FK_1111111111',
-            'comp_ps',
-            'prof_standart_id',
-            'prof_standart',
+            'FK_prepodId_nidHasPrepod',
+            'nid_has_prepod',
+            'prepod_id',
+            'prepod',
             'id'
         );
+
+
 //        $this->addForeignKey(
-//            'FK_c_comp_ps_id',
-//            'comp_ps',
+//            'FK_c_period_id',
+//            'period',
 //            'create_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_u_comp_ps_id',
-//            'comp_ps',
+//            'FK_u_period_id',
+//            'period',
 //            'update_by',
 //            'user',
 //            'id'
 //        );
 //        $this->addForeignKey(
-//            'FK_d_comp_ps_id',
-//            'comp_ps',
+//            'FK_d_period_id',
+//            'period',
 //            'delete_by',
 //            'user',
 //            'id'
@@ -65,10 +66,11 @@ class m240521_203000_create_comp_ps_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('comp_ps');
-        
-        //ВК
-        $this->dropForeignKey('FK_parent_id123', 'comp_ps');
-        $this->dropForeignKey('FK_1111111111', 'prof_standart');
+        $this->dropTable('nid_has_prepod');
+
+        //FK
+        $this->dropForeigenKey('FK_nidId_nidHasPrepod', 'nid');
+        $this->dropForeigenKey('FK_prepodId_nidHasPrepod', 'prepod');
     }
 }
+
