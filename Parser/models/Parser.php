@@ -2,10 +2,8 @@
 
 namespace app\modules\admin\Parser\models;
 
-use app\modules\admin\Parser\models\tables\TypeTaskPd;
 use Yii;
 use yii\base\Model;
-use yii\web\IdentityInterface;
 
 class Parser extends Model {
     public $file;
@@ -87,7 +85,7 @@ class Parser extends Model {
             $table = new tables\TypeTaskPd();
 
             $name = (string) $p['Наименование'];
-            if (TypeTaskPd::find()->andWhere(['name' => $name])->count() == 1) { continue; }
+            if (tables\TypeTaskPd::find()->andWhere(['name' => $name])->count() == 1) { continue; }
             $table->name = $name;
 
             $table->create_at = time();
@@ -103,21 +101,18 @@ class Parser extends Model {
         }
     }
 
-    private function parse_np_table() {
-    }
-
-    private function parse_facultet_table() {
+    private function parse_sprav_facultet_table() {
         $path = eval(Paths::$path_to_Факультеты);
 
         foreach ($path as $p) {
-            $table = new tables\Facultet();
+            $table = new tables\SpravFacultet();
 
             $name = (string) $p['Факультет'];
             $filial_code = (int) $p['Код_филиала'];
             $institut_id = (tables\Institut::findOne(['code_filiala' => $filial_code]))->id;
 
             // проверка уникальности
-            if (tables\Facultet::findOne(['name' => $name, 'institut_id' => $institut_id])) { continue; }
+            if (tables\SpravFacultet::findOne(['name' => $name, 'institut_id' => $institut_id])) { continue; }
 
             $table->name = $name;
             $table->institut_id = $institut_id;
@@ -175,9 +170,9 @@ class Parser extends Model {
             if (!$table->save()) {
                 $this->not_parse_errors = false;
             }
-
         }
     }
+
     private function parse_type_work_table() {
         $path = eval(Paths::$path_to_СправочникВидыРабот);
 
@@ -198,9 +193,9 @@ class Parser extends Model {
             if (!$table->save()) {
                 $this->not_parse_errors = false;
             }
-
         }
     }
+
     private function parse_type_periods_table() {
         $path = eval(Paths::$path_to_ПланыГрафикиЯчейки);
 
@@ -224,6 +219,7 @@ class Parser extends Model {
 
         }
     }
+
     private function parse_staff_table() {
         $path = eval(Paths::$path_to_ДолжностныеЛица);
 
@@ -250,224 +246,159 @@ class Parser extends Model {
 
         }
     }
+
     private function parse_sroc_education_table() {
         $path = eval(Paths::$path_to_Планы);
+        $table = new tables\SrocEducation();
 
-            $table = new tables\SrocEducation();
+        $name = (string) $path['СрокОбучения'];
+        if (tables\SrocEducation::find()->andWhere(['name' => $name])->count() == 1) { return; }
+        $table->name = $name;
 
-            $god = (string)$path['СрокОбучения'];
-            $mesec = (string)$path['СрокОбученияМесяцев'];
-            if (tables\SrocEducation::find()->andWhere(['god' => $god])->count() == 1 and
-                tables\SrocEducation::find()->andWhere(['mesec' => $mesec])->count() == 1) {
-                return;
-            }
-            $table->god = $god;
-            $table->mesec = $mesec;
+        $table->create_at = time();
+        $table->create_by = Yii::$app->user->getId();
+        $table->update_at = time();
+        $table->update_by = Yii::$app->user->getId();
+        $table->active = 1;
+        $table->lock = 1;
 
-            $table->create_at = time();
-            $table->create_by = Yii::$app->user->getId();
-            $table->update_at = time();
-            $table->update_by = Yii::$app->user->getId();
-            $table->active = 1;
-            $table->lock = 1;
-
-            if (!$table->save()) {
-                $this->not_parse_errors = false;
-            }
-
-    }
-    private function parse_type_session_table() {
-        $path = eval(Paths::$path_to_Заезды);
-
-        foreach ($path as $p){
-            $table = new tables\TypeSession();
-
-            $name = (string) $p['Название'];
-            if (tables\TypeSession::find()->andWhere(['name' => $name])->count() == 1){
-                continue;
-            }
-            $table->name = $name;
-
-            $table->create_at = time();
-            $table->create_by = Yii::$app->user->getId();
-            $table->update_at = time();
-            $table->update_by = Yii::$app->user->getId();
-            $table->active = 1;
-            $table->lock = 1;
-
-            if (!$table->save()) {
-                $this->not_parse_errors = false;
-            }
-        }
-
-    }
-    private function parse_form_table() {
-        $path = eval(Paths::$path_to_Заезды);
-
-        foreach ($path as $p){
-            $table = new tables\TypeSession();
-
-            $data = (string) $p['Название'];
-            if (tables\TypeSession::find()->andWhere(['data' => $data])->count() == 1){
-                continue;
-            }
-            $table->data = $data;
-
-            $table->create_at = time();
-            $table->create_by = Yii::$app->user->getId();
-            $table->update_at = time();
-            $table->update_by = Yii::$app->user->getId();
-            $table->active = 1;
-            $table->lock = 1;
-
-            if (!$table->save()) {
-                $this->not_parse_errors = false;
-            }
+        if (!$table->save()) {
+            $this->not_parse_errors = false;
         }
     }
-    private function parse_kafedra_table() {
-        $path = eval(Paths::$path_to_Кафедры);
-        $path1 = eval(Paths::$path_to_Факультеты);
 
-        foreach ($path as $p) {
-            $table = new tables\Kafedra();
+    private function parse_prof_standart_table() {
+        $path = eval(Paths::$path_to_псСтандарты);
+        if ($path['ПриказДата'] == null) { return; }
+        $table = new tables\ProfStandart;
 
-            $name = (string)$p['Название'];
+        $number = (string) $path['НомерВГруппе'];
+        if (tables\ProfStandart::find()->andWhere(['number' => $number])->count() == 1) { return; }
+        $table->number = $number;
+        $table->date = $path['ПриказДата'];
 
+        $table->create_at = time();
+        $table->create_by = Yii::$app->user->getId();
+        $table->update_at = time();
+        $table->update_by = Yii::$app->user->getId();
+        $table->active = 1;
+        $table->lock = 1;
 
-            if (tables\Kafedra::find()->andWhere(['name' => $name])->count() == 1) {
-                continue;
-            }
-            $table->name = $name;
-            foreach ($path1 as $p1) {
-                $facultet = (string) $p1['Факультет'];
-                $facultet_id = (tables\Facultet::findOne(['name' => $facultet]))->id;
-                if (tables\Kafedra::find()->andWhere(['name' => $name, 'facultet_id' => $facultet_id])->count() == 1) {
-                    continue;
-                }
-                $table->facultet_id = $facultet_id;
-
-                $table->create_at = time();
-                $table->create_by = Yii::$app->user->getId();
-                $table->update_at = time();
-                $table->update_by = Yii::$app->user->getId();
-                $table->active = 1;
-                $table->lock = 1;
-
-                if (!$table->save()) {
-                    $this->not_parse_errors = false;
-                }
-            }
-        }
-
-    }
-    private function parse_sprav_dis_table(){
-        $path = eval(Paths::$path_to_ПланыСтроки);
-        $path1 = eval(Paths::$path_to_Кафедры);
-
-        foreach ($path as $p) {
-            $table = new tables\SpravDis();
-
-            $name = (string)$p['Дисциплина'];
-
-
-            if (tables\SpravDis::find()->andWhere(['name' => $name])->count() == 1) {
-                continue;
-            }
-            $table->name = $name;
-            foreach ($path1 as $p1) {
-                $kafedra = (string) $p1['Название'];
-                $kafedra_id = (tables\Kafedra::findOne(['name' => $kafedra]))->id;
-                if (tables\SpravDis::find()->andWhere(['name' => $name, 'kafedra_id' => $kafedra_id])->count() == 1) {
-                    continue;
-                }
-                $table->kafedra_id = $kafedra_id;
-
-                $table->create_at = time();
-                $table->create_by = Yii::$app->user->getId();
-                $table->update_at = time();
-                $table->update_by = Yii::$app->user->getId();
-                $table->active = 1;
-                $table->lock = 1;
-
-                if (!$table->save()) {
-                    $this->not_parse_errors = false;
-                }
-            }
-        }
-    }
-    private function parse_disciplins_table(){
-        $path = eval(Paths::$path_to_ПланыСтроки);
-        $path1 = eval(Paths::$path_to_Кафедры);
-
-        foreach ($path as $p) {
-            $table = new tables\SpravDis();
-
-            $name = (string)$p['Дисциплина'];
-
-
-            if (tables\SpravDis::find()->andWhere(['name' => $name])->count() == 1) {
-                continue;
-            }
-            $table->name = $name;
-            foreach ($path1 as $p1) {
-                $kafedra = (string) $p1['Название'];
-                $kafedra_id = (tables\Kafedra::findOne(['name' => $kafedra]))->id;
-                if (tables\SpravDis::find()->andWhere(['name' => $name, 'kafedra_id' => $kafedra_id])->count() == 1) {
-                    continue;
-                }
-                $table->kafedra_id = $kafedra_id;
-
-                $table->create_at = time();
-                $table->create_by = Yii::$app->user->getId();
-                $table->update_at = time();
-                $table->update_by = Yii::$app->user->getId();
-                $table->active = 1;
-                $table->lock = 1;
-
-                if (!$table->save()) {
-                    $this->not_parse_errors = false;
-                }
-            }
-        }
-    }
-    private function parse_kk_table() {
-        $path = eval(Paths::$path_to_ПланыСтроки);
-        $path1 = eval(Paths::$path_to_ПланыСтроки);
-
-        foreach ($path as $p) {
-            $table = new tables\SpravDis();
-
-            $name = (string)$p['Дисциплина'];
-
-
-            if (tables\SpravDis::find()->andWhere(['name' => $name])->count() == 1) {
-                continue;
-            }
-            $table->name = $name;
-            foreach ($path1 as $p1) {
-                $kafedra = (string) $p1['КодКафедры'];
-                $kafedra_id = (tables\Kafedra::findOne(['name' => $kafedra]))->id;
-                if (tables\SpravDis::find()->andWhere(['name' => $name, 'kafedra_id' => $kafedra_id])->count() == 1) {
-                    continue;
-                }
-                $table->kafedra_id = $kafedra_id;
-
-                $table->create_at = time();
-                $table->create_by = Yii::$app->user->getId();
-                $table->update_at = time();
-                $table->update_by = Yii::$app->user->getId();
-                $table->active = 1;
-                $table->lock = 1;
-
-                if (!$table->save()) {
-                    $this->not_parse_errors = false;
-                }
-            }
+        if (!$table->save()) {
+            $this->not_parse_errors = false;
         }
     }
 
     private function parse_comp_ps_table() {
+        $path = eval(Paths::$path_to_псГруппы);
+        if ($path['Группа'] == null) { return; }
+
+        $standart = eval(Paths::$path_to_псСтандарты);
+        $standart_number = (string) $standart['НомерВГруппе'];
+        $standart_id = (tables\ProfStandart::findOne(['number' => $standart_number]))->id;
+
+        $path = eval(Paths::$path_to_псГруппы);
+        $table = new tables\CompPs();
+        $index = (string) $path['КодГруппы'];
+        $name = (string) $path['Группа'];
+        if (tables\CompPs::find()->andWhere(['name' => $name, 'index' => $index])->count() == 0) {
+            $table->index = $index;
+            $table->name = $name;
+            $table->prof_standart_id = $standart_id;
+
+            $table->create_at = time();
+            $table->create_by = Yii::$app->user->getId();
+            $table->update_at = time();
+            $table->update_by = Yii::$app->user->getId();
+            $table->active = 1;
+            $table->lock = 1;
+
+            if (!$table->save()) {
+                $this->not_parse_errors = false;
+            }
+        }
+
+        $path = eval(Paths::$path_to_псСтандарты);
+        $table = new tables\CompPs();
+        $index = (string) $path['НомерВГруппе'];
+        $name = (string) $path['НаименованиеСтандарта'];
+        if (tables\CompPs::find()->andWhere(['name' => $name, 'index' => $index])->count() == 0) {
+            $table->index = $index;
+            $table->name = $name;
+            $table->prof_standart_id = $standart_id;
+
+            $table->create_at = time();
+            $table->create_by = Yii::$app->user->getId();
+            $table->update_at = time();
+            $table->update_by = Yii::$app->user->getId();
+            $table->active = 1;
+            $table->lock = 1;
+
+            if (!$table->save()) {
+                $this->not_parse_errors = false;
+            }
+        }
+
+        $path = eval(Paths::$path_to_псОбобщенныеФункции);
+        foreach ($path as $p) {
+            $table = new tables\CompPs();
+
+            $name = (string) $p['ОбобщеннаяФункция'];
+            $index = (string) $p['Шифр'];
+            if (tables\CompPs::find()->andWhere(['name' => $name, 'index' => $index])->count() == 1) { continue; }
+            $table->name = $name;
+            $table->index = $index;
+            $table->trebovanie = $p['ТребованияОбразование'];
+            $table->prof_standart_id = $standart_id;
+
+            $table->create_at = time();
+            $table->create_by = Yii::$app->user->getId();
+            $table->update_at = time();
+            $table->update_by = Yii::$app->user->getId();
+            $table->active = 1;
+            $table->lock = 1;
+
+            if (!$table->save()) {
+                $this->not_parse_errors = false;
+            }
+        }
+
+        $path = eval(Paths::$path_to_псФункции);
+        foreach ($path as $p) {
+            $table = new tables\CompPs();
+
+            $name = (string) $p['Функция'];
+            $index = (string) $p['Шифр'];
+            if (tables\CompPs::find()->andWhere(['name' => $name, 'index' => $index])->count() == 1) { continue; }
+            $table->name = $name;
+            $table->index = $index;
+            $table->prof_standart_id = $standart_id;
+
+            $table->create_at = time();
+            $table->create_by = Yii::$app->user->getId();
+            $table->update_at = time();
+            $table->update_by = Yii::$app->user->getId();
+            $table->active = 1;
+            $table->lock = 1;
+
+            if (!$table->save()) {
+                $this->not_parse_errors = false;
+            }
+        }
+
+    }
+
+    private function parse_np_table() {
+
+    }
+
+    private function parse_form_table() {
+    }
+
+    private function parse_kafedra_table() {
+    }
+
+    private function parse_kk_table() {
     }
 
     private function parse_main_plan_table() {
@@ -479,11 +410,12 @@ class Parser extends Model {
     private function parse_podpisants_table() {
     }
 
-    private function parse_prof_standart_table() {
-    }
-
     private function parse_session_table() {
     }
+
+    private function parse_type_session_table() {
+    }
+
 
     private function save_all($transaction) {
         /* Если ошибок при записи данных не было,
@@ -508,34 +440,35 @@ class Parser extends Model {
         $transaction = Yii::$app->db->beginTransaction();
 
         // сделано
-      // $this->parse_fgos_table();
-      // $this->parse_comp_table(); // добавить main_plan_id FK
-//        $this->parse_institut_table();
-//        $this->parse_facultet_table();
-      //   $this->parse_type_task_pd_table();
-//        $this->parse_kvalification_table();
-//        $this->parse_fo_table();
-//        $this->parse_type_work_table();
-//        $this->parse_staff_table();
-//        $this->parse_sroc_education_table();
-//        $this->parse_type_session_table();
-//        $this->parse_kafedra_table();
-//        $this->parse_sprav_dis_table();
+    //   $this->parse_fgos_table();
+        //   $this->parse_institut_table();
+        //   $this->parse_sprav_facultet_table();
+        //   $this->parse_type_task_pd_table();
+        //   $this->parse_kvalification_table();
+        //   $this->parse_fo_table();
+        //   $this->parse_type_work_table();
+        //   $this->parse_staff_table();
+
+        //   $this->parse_prof_standart_table(); // Никита
+        //   $this->parse_comp_ps_table(); // Никита
+
+        //   $this->parse_sroc_education_table(); // Александр
 
         // в процессе
-//        $this->parse_np_table(); //Никита
-//        $this->parse_session_table(); //Элвин
-//        $this->parse_comp_ps_table(); //Никита
-//        $this->parse_prof_standart_table(); //Никита
-//        $this->parse_form_table();
-//        $this->parse_disciplins_table();
-//        $this->parse_kk_table();
-
+//        $this->parse_np_table(); // Никита
+//        $this->parse_session_table(]); // Элвин
 
         // не готово
+//        $this->parse_kafedra_table(); // Никита
+//        $this->parse_comp_table(); // Никита // добавить main_plan_id FK
+//        $this->parse_kaf_has_table(); // Никита
+//        $this->parse_form_table(); // Александр
+//        $this->parse_disciplins_table(); // Александр
+//        $this->parse_sprav_table(); // Александр
+//        $this->parse_type_form_table(); // Александр
+//        $this->parse_podpisants_table();
 //        $this->parse_main_plan_table();
 //        $this->parse_plan_table();
-//        $this->parse_podpisants_table();
 
         //под вопросом
 //        $this->parse_type_periods_table();

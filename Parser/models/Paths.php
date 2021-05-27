@@ -16,7 +16,10 @@ class Paths {
     public static $path_to_СправочникВидыРабот = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->СправочникВидыРабот;';
     public static $path_to_ПланыГрафикиЯчейки = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->ПланыГрафикиЯчейки;';
     public static $path_to_ДолжностныеЛица = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->ДолжностныеЛица;';
-    public static $path_to_Заезды = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->Заезды;';
-    public static $path_to_ПланыСтроки = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->ПланыСтроки;';
-    public static $path_to_Кафедры = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->Кафедры;';
+    public static $path_to_псСтандарты = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->псСтандарты;';
+    public static $path_to_псОбобщенныеФункции = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->псОбобщенныеФункции;';
+    public static $path_to_псФункции = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->псФункции;';
+    public static $path_to_псГруппы = 'return $this->xml->children("urn:schemas-microsoft-com:xml-diffgram-v1")->children()->dsMMISDB->псГруппы;';
+
+
 }
