@@ -6,8 +6,8 @@ class m240521_200000_create_sroc_education_table extends Migration{
     public function safeUp(){
         $this->createTable('sroc_education',[
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(30)->notNull()->comment('срок обучения'),
-
+            'god' => $this->string(10)->notNull()->comment('год обучения'),
+            'masec' => $this->string(10)->notNull()->comment('месец обучения'),
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
             'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
