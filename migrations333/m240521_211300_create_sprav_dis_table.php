@@ -8,7 +8,7 @@ class m240521_211300_create_sprav_dis_table extends Migration
     {
         $this->createTable('sprav_dis', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'name' => $this->string(45)->notNull()->comment('тип дисциплины'),
+            'name' => $this->string(256)->notNull()->comment('тип дисциплины'),
             'sprav_kafedra_id' => $this->integer()->comment('Ссылка на кафедру'),
 
             'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
