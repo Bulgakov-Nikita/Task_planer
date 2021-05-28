@@ -261,14 +261,13 @@ class Parser extends Model {
 
         $table = new tables\SrocEducation();
 
-        $god = (string)$path['СрокОбучения'];
-        $masec = (string)$path['СрокОбученияМесяцев'];
-        if (tables\SrocEducation::find()->andWhere(['god' => $god])->count() == 1 and
-            tables\SrocEducation::find()->andWhere(['masec' => $masec])->count() == 1) {
+       $god = (string) $path['СрокОбучения'];
+        $mesec = (string) $path['СрокОбученияМесяцев'];
+        $name = $god.'г '.$mesec.'м';
+        if (tables\SrocEducation::find()->andWhere(['name' => $name])->count() == 1) {
             return;
         }
-        $table->god = $god;
-        $table->masec = $masec;
+        $table->name = $name;
 
         $table->create_at = time();
         $table->create_by = Yii::$app->user->getId();
