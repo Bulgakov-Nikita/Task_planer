@@ -6,7 +6,7 @@ class m240521_210000_create_main_plan_table extends Migration{
     public function safeUp(){
         $this->createTable('main_plan',[
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'date_sp' => $this->date()->notNull()->comment('год начала подготовки'),
+            'date_sp' => $this->string(20)->notNull()->comment('год начала подготовки'),
             'date_education' => $this->string(20)->notNull()->comment('год обучения'),
             'date_ut' => $this->date()->comment('дата утверждения'),
             'name_or' => $this->text()->notNull()->comment('название организации'),
