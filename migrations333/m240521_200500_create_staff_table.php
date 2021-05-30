@@ -14,12 +14,12 @@ class m240521_200500_create_staff_table extends Migration
             'post' => $this->text()->notNull()->comment('должность'),
             'user_id' => $this->integer()->comment('юзер id'),
 
-            'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
-            'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
-            'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
-            'update_by' => $this->integer(11)->notNull()->comment('кем создано'),
-            'delete_at' => $this->integer(11)->comment('дата удаления'),
-            'delete_by' => $this->integer(11)->comment('кем удалено'),
+            'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
+            'created_by' => $this->integer(11)->notNull()->comment('кем создано'),
+            'updated_at' => $this->integer(11)->notNull()->comment('дата обновления'),
+            'updated_by' => $this->integer(11)->notNull()->comment('кем создано'),
+            'deleted_at' => $this->integer(11)->comment('дата удаления'),
+            'deleted_by' => $this->integer(11)->comment('кем удалено'),
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);

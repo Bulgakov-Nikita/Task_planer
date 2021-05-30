@@ -13,12 +13,12 @@ class m240521_210402_create_prep_rekv_table extends Migration
             'kval_prepod' => $this->text()->comment('квалификация преподавателя'),
             'svedenia' => $this->text()->comment('Сведения о повышении квалификации и (или) профессиональной переподготовке'),
 
-            'create_at' => $this->integer(11)->notNull()->comment('дата создания'),
-            'create_by' => $this->integer(11)->notNull()->comment('кем создано'),
-            'update_at' => $this->integer(11)->notNull()->comment('дата обновления'),
-            'update_by' => $this->integer(11)->notNull()->comment('кем создано'),
-            'delete_at' => $this->integer(11)->comment('дата удаления'),
-            'delete_by' => $this->integer(11)->comment('кем удалено'),
+            'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
+            'created_by' => $this->integer(11)->notNull()->comment('кем создано'),
+            'updated_at' => $this->integer(11)->notNull()->comment('дата обновления'),
+            'updated_by' => $this->integer(11)->notNull()->comment('кем создано'),
+            'deleted_at' => $this->integer(11)->comment('дата удаления'),
+            'deleted_by' => $this->integer(11)->comment('кем удалено'),
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
