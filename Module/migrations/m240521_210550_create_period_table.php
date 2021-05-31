@@ -13,6 +13,7 @@ class m240521_210550_create_period_table extends Migration
             'semestr' => $this->integer()->notNull()->comment('Семестр'),
             'course' => $this->integer()->notNull()->comment('Номер курса'),
             'type_periods_id' => $this->integer()->notNull()->comment('внешний ключ'),
+            'main_plan_id' => $this->integer()->notNull()->comment('внешний ключ'),
 
             'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'created_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -31,6 +32,13 @@ class m240521_210550_create_period_table extends Migration
             'period',
             'type_periods_id',
             'type_periods',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_type_periods_id444111',
+            'period',
+            'main_plan_id',
+            'main_plan',
             'id'
         );
         $this->addForeignKey(
