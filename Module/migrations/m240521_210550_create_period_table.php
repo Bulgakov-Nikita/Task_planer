@@ -11,6 +11,7 @@ class m240521_210550_create_period_table extends Migration
             'begin' => $this->date()->notNull()->comment('Дата начала периода'),
             'end' => $this->date()->notNull()->comment('Дата конца периода'),
             'semestr' => $this->integer()->notNull()->comment('Семестр'),
+            'course' => $this->integer()->notNull()->comment('Номер курса'),
             'type_periods_id' => $this->integer()->notNull()->comment('внешний ключ'),
 
             'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
