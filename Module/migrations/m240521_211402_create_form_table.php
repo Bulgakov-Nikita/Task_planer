@@ -32,13 +32,6 @@ class m240521_211402_create_form_table extends Migration
             'id'
         );
         $this->addForeignKey(
-            'FK_plan_id321',
-            'form',
-            'plan_id',
-            'plan',
-            'id'
-        );
-        $this->addForeignKey(
             'FK_c_form_id',
             'form',
             'created_by',
