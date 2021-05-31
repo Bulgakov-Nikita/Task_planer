@@ -11,7 +11,6 @@ class m240521_211402_create_form_table extends Migration
             'data' => $this->string(45)->notNull()->comment('данные'),
             'type_form_id' => $this->integer()->notNull()->comment('ссылка на тип формы'),
             'disciplins_id' => $this->integer()->notNull()->comment('ссылка на'),
-            'plan_id' => $this->integer()->notNull()->comment('ссылка на'),
 
             'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'created_by' => $this->integer(11)->notNull()->comment('кем создано'),
