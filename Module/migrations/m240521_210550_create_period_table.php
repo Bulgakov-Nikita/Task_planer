@@ -35,7 +35,7 @@ class m240521_210550_create_period_table extends Migration
             'id'
         );
         $this->addForeignKey(
-            'FK_type_periods_id444111',
+            'FK_main_plan_id444111',
             'period',
             'main_plan_id',
             'main_plan',
