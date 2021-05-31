@@ -10,7 +10,7 @@ class m240521_211400_create_disciplins_table extends Migration
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'index' => $this->string(45)->notNull()->comment('индекс'),
             'parent_id' => $this->integer()->comment('ссылка самого на себя'),
-            'sprav_dis_id' => $this->integer()->notNull()->comment('ссылка на компетенцию'),
+            'sprav_dis_id' => $this->integer()->comment('ссылка на компетенцию'),
             'plan_id' => $this->integer()->notNull()->comment('comment in light future'),
             'sprav_kafedra_id' => $this->integer()->notNull()->comment('comment in light future'),
 
