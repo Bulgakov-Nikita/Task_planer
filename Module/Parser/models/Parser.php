@@ -1333,7 +1333,7 @@ class Parser extends Model {
 
             $number_courses = (string) $path_plans['ЧислоКурсов'];
             for ($course = 1; $course <= (integer) $number_courses; $course++) {
-                $kurs_id = (tables\Kurs::findOne(['number_kurs  ' => $course]))->id;
+                $kurs_id = (tables\Kurs::findOne(['number_kurs' => $course]))->id;
                 $plan_id = (tables\Plan::findOne(['kurs_id' => $kurs_id, 'main_plan_id' => $main_plan_id]))->id;
 
                 foreach ($path_selected_types_work as $selected_type_work) {
