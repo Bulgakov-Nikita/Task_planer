@@ -2,15 +2,13 @@
 
 use \yii\db\Migration;
 
-class m240521_222730_create_akkred_hours_table extends Migration
-{
-    public function safeUp()
-    {
-        $this->createTable('akkred_hours', [
+class m240521_224000_create_room_table extends Migration{
+    public function safeUp(){
+        $this->createTable('room', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'value' => $this->float()->notNull()->comment('данные'),
-            'type_work_id' => $this->integer()->notNull()->comment('ссылка на тип формы'),
-            'disciplins_id' => $this->integer()->notNull()->comment('ссылка на'),
+            'name' => $this->string(100)->notNull()->comment('Краткое название кабинета(комнаты)'),
+            'level' => $this->integer()->notNull()->comment('Этаж на котором нахожиться комната'),
+            'discription' => $this->text()->comment('Описание к комнате'),
 
             'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'created_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -21,23 +19,9 @@ class m240521_222730_create_akkred_hours_table extends Migration
             'active' => $this->tinyInteger(1)->notNull()->comment('статус'),
             'lock' => $this->integer(11)->notNull()->comment('блокировка')
         ]);
-        $this->addCommentOnTable('akkred_hours', 'Таблица для хранения информации о з.е');
+        $this->addCommentOnTable('room', 'Таблица для хранения комнат');
 
         //FK
-        $this->addForeignKey(
-            'FK_disciplins_id_akkred_hours',
-            'akkred_hours',
-            'disciplins_id',
-            'disciplins',
-            'id'
-        );
-        $this->addForeignKey(
-            'FK_typeWork_akkred_hours',
-            'akkred_hours',
-            'type_work_id',
-            'type_work',
-            'id'
-        );
         // $this->addForeignKey(
         //     'FK_c_form_id',
         //     'form',
@@ -63,10 +47,8 @@ class m240521_222730_create_akkred_hours_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('form');
+        $this->dropTable('items');
 
         //FK
-        $this->dropForeignKey('FK_disciplins_id_akkred_hours', 'disciplins');
-        $this->dropForeignKey('FK_typeWork_akkred_hours', 'type_work');
     }
 }

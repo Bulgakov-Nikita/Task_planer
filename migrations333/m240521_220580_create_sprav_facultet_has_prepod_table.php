@@ -38,12 +38,14 @@ class m240521_220580_create_sprav_facultet_has_prepod_table extends Migration
             'id'
         );
 
-//        PK:
+        //PK:
         $this->addPrimaryKey(
             'PK_spravFacultetId-prepodId_sprav_facultet_has_prepod',
-            'sprav_facultet_has_prepod',[
-            'prepod_id',
-            'sprav_facultet_id']
+            'sprav_facultet_has_prepod',
+            [
+                'prepod_id',
+                'sprav_facultet_id'
+            ]
         );
         // $this->addForeignKey(
         //     'FK_c_dc_id',
