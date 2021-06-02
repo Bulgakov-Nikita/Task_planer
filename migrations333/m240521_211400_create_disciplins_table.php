@@ -11,8 +11,8 @@ class m240521_211400_create_disciplins_table extends Migration
             'index' => $this->string(45)->notNull()->comment('индекс'),
             'parent_id' => $this->integer()->comment('ссылка самого на себя'),
             'sprav_dis_id' => $this->integer()->notNull()->comment('ссылка на компетенцию'),
-            'plan_id' => $this->integer()->notNull()->comment('comment in light future'),
             'sprav_kafedra_id' => $this->integer()->notNull()->comment('comment in light future'),
+            'main_plan_id' => $this->integer()->notNull()->comment('id для учебного плана'),
 
             'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'created_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -41,17 +41,17 @@ class m240521_211400_create_disciplins_table extends Migration
             'id'
         );
         $this->addForeignKey(
-            'FK_comp_id123123',
-            'disciplins',
-            'plan_id',
-            'plan',
-            'id'
-        );
-        $this->addForeignKey(
             'FK_comp_id321321',
             'disciplins',
             'sprav_kafedra_id',
             'sprav_kafedra',
+            'id'
+        );
+        $this->addForeignKey(
+            'FK_main_paln_disciplins',
+            'disciplins',
+            'main_plan_id',
+            'main_plan',
             'id'
         );
         // $this->addForeignKey(
@@ -84,7 +84,7 @@ class m240521_211400_create_disciplins_table extends Migration
         //FK
         $this->dropForeignKey('FK_parent_id111', 'disciplins');
         $this->dropForeignKey('FK_comp_id333222111', 'sprav_dis');
-        $this->dropForeignKey('FK_comp_id123123', 'plan');
         $this->dropForeignKey('FK_comp_id321321', 'sprav_kafedra');
+        $this->dropForeignKey('FK_main_paln_disciplins', 'main_plan');
     }
 }

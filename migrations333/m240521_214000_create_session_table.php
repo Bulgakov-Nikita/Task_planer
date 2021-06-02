@@ -8,10 +8,11 @@ class m240521_214000_create_session_table extends Migration
     {
         $this->createTable('session', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
-            'data' => $this->string(45)->notNull()->comment('данные'),
+            'value' => $this->float()->notNull()->comment('данные'),
             'type_session_id' => $this->integer()->notNull()->comment('ссылка на тип сессии'),
             'type_work_id' => $this->integer()->notNull()->comment('ссылка на тип работы'),
-            'plan_id' => $this->integer()->notNull()->comment('ссылка на план'),
+            'disciplins_id' => $this->integer()->notNull()->comment('ссылка на дисципоины'),
+            'kurs_id' => $this->integer()->notNull()->comment('ссылка на курсы'),
 
             'created_at' => $this->integer(11)->notNull()->comment('дата создания'),
             'created_by' => $this->integer(11)->notNull()->comment('кем создано'),
@@ -38,12 +39,20 @@ class m240521_214000_create_session_table extends Migration
             'type_work',
             'id');
         $this->addForeignKey(
-            'FK_plan_id333111',
+            'FK_type_form_id32341',
             'session',
-            'plan_id',
-            'plan',
+            'disciplins_id',
+            'disciplins',
             'id'
         );
+        $this->addForeignKey(
+            'FK_kursId_session',
+            'session',
+            'kurs_id',
+            'kurs',
+            'id'
+        );
+
         // $this->addForeignKey(
         //     'FK_c_session_id',
         //     'session',
@@ -75,6 +84,8 @@ class m240521_214000_create_session_table extends Migration
         //FK
         $this->dropForeignKey('FK_type_session_id333111', 'type_session');
         $this->dropForeignKey('FK_type_work_id333111', 'type_work');
-        $this->dropForeignKey('FK_plan_id333111', 'plan');
+        $this->dropForeignKey('FK_type_form_id32341', 'disciplins');
+        $this->dropForeignKey('FK_kursId_session', 'kurs');
+
     }
 }

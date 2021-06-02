@@ -9,7 +9,7 @@ class m240521_210200_create_nid_table extends Migration
         $this->createTable('nid', [
             'id' => $this->primaryKey()->notNull()->comment('Первичный ключ'),
             'code' => $this->string(45)->notNull()->comment(''),
-            'main_plan_id' => $this->integer()->notNull()->comment('ссылка на курсы'),
+            'main_plan_id' => $this->integer()->notNull()->comment('ссылка на план'),
             'perechen' => $this->text()->notNull()->comment('ссылка на кафедру'),
             'result' => $this->text()->notNull()->comment('ссылка на кафедру'),
             'svedenia' => $this->text()->notNull()->comment('ссылка на кафедру'),
